@@ -91,7 +91,7 @@ $resultadoProductos=$sentenciaProductos->fetchAll();
                     <p class="card-text">ID: <?php echo $producto['id']?></p>
                     <p class="card-text">Descripción: <?php echo $producto['descripcion']?></p>
                     <p class="card-text">Precio: <?php echo $producto['precio']?></p>
-                    <button class="btn btn-primary btn-lg active" onclick="registrarProducto(<?php $producto['id']?>,<?php $producto['precio']?>)">Registrar</button>
+                    <button class="btn btn-primary btn-lg active" onclick="registrarProducto('<?php echo ($producto['id'])?>','<?php  echo($producto['precio'])?>')">Registrar</button>
                 </div>
             </div>
             <?php endforeach?>

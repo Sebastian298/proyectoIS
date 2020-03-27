@@ -18,7 +18,7 @@ $precio = $_POST['precio'];
 		$respuesta = ['error' => true];
 	} else {
 		if($db){
-			$query = "INSERT INTO venta(idProducto,Precio) VALUES('$id','$precio') WHERE idProducto = $id";
+			$query = "INSERT INTO venta(idProducto,Precio) VALUES('$id','$precio')";
 			$ejec = mysqli_query($conexion,$query);
 			if($ejec){
 				$respuesta = [];
@@ -26,6 +26,7 @@ $precio = $_POST['precio'];
 			} else{
 				echo 'Error';	
 				$respuesta = ['error' =>true];
+
 			}
 	
 		} else {
