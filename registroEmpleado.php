@@ -13,9 +13,9 @@ $pass = $_POST['password'];
 
 
 function validarDatos($nombre, $apellidos, $pass){
-	if($nombre == ''){
+	if($nombre == '' || is_numeric($nombre)){
 		return false;
-	} elseif($apellidos==''){
+	} elseif($apellidos=='' || is_numeric($apellidos)){
 		return false;
 	} elseif($pass == ''){
 		return false;

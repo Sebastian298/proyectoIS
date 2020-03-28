@@ -1,12 +1,8 @@
 var btn_cargar = document.getElementById('btn_cargar_usuarios'),
     editar = document.getElementById('botn'),
-	error_box = document.getElementById('error_box'),
-	tabla = document.getElementById('tabla'),
-	loader = document.getElementById('loader');
+	tabla = document.getElementById('tabla');
+var nombre,apellidos,password;
 
-var usuario_nombre,
-	usuario_apellidos,
-	usuario_password;
 document.getElementById('ID').style.display = 'none';
 document.getElementById('boton').style.display='none';
 function cargarUsuarios(){
@@ -49,66 +45,26 @@ function cargarUsuarios(){
 }
 
 function agregarUsuarios(){
-	// function POST_PHP(url, succes_function, param) {
-	// 	$.ajax({
-	// 		data: param,
-	// 		url: url,
-	// 		method: "post",
-	// 		success: succes_function
-	// 	});
-	// }
-	//
-	//
-    // var parm = {
-    //     usuario_nombre: formulario.nombre.value.trim(),
-    //     usuario_apellidos: formulario.apellidos.value.trim(),
-    //     usuario_password: formulario.password.value.trim()
-    // };
-	// 
-	// POST_PHP('registroEmpleado.php', succes_function, parm);
-	// 
-	// function succes_function(res){
-	// 	console.log(res.usuario_apellidos);
-	// }
-
-
-	var peticion = new XMLHttpRequest();
-	peticion.open('GET', 'registroEmpleado.php');
-	usuario_nombre = formulario.nombre.value.trim();
-	usuario_apellidos = formulario.apellidos.value.trim();
-	usuario_password = formulario.password.value.trim();
-
-	if(formulario_valido()){
-		error_box.classList.remove('active');
-		var parametros = 'nombre='+ usuario_nombre + '&apellidos='+ usuario_apellidos +'&password='+ usuario_password;
-
-		peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-		loader.classList.add('active');
-
-		peticion.onload = function(){
-			cargarUsuarios();
-			formulario.nombre.value = '';
-			formulario.apellidos.value = '';
-			formulario.password.value = '';
-
+var peticion = new XMLHttpRequest();
+   nombre = document.getElementById('nombre').value;
+   apellidos = document.getElementById('Apellidos').value;
+   password = document.getElementById('Password').value;
+   if(formulario_valido()){
+	peticion.open('POST','registroEmpleado.php');
+	var parametros = 'nombre='+ nombre + '&apellidos='+ apellidos +'&password='+ password;
+	peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  
+	peticion.onreadystatechange = ()=>{
+	  if(peticion.readyState == 4 && peticion.status == 200){
+		  alert('Se a capturado el usuario con exito');
+		  cargarUsuarios();
 		}
-
-		peticion.onreadystatechange = function(){
-			if(peticion.readyState == 4 && peticion.status == 200){
-				loader.classList.remove('active');
-			}
-		}
-
-		peticion.send(parametros);
-
-		
-	} else {
-		// error_box.classList.add('active');
-		// error_box.innerHTML = 'Por favor completa el formulario correctamente';
-		alert('ERROR, Por favor rellene correctamente el formulario');
-		
 	}
+  
+   peticion.send(parametros);
+   }else{
+	   alert('Error al capturar los datos');
+   }
 }
 
 btn_cargar.addEventListener('click', function(){
@@ -118,11 +74,11 @@ btn_cargar.addEventListener('click', function(){
 
 
 function formulario_valido(){
-	if(usuario_nombre == ''){
+	if(nombre == ''){
 		return false;
-	} else if(usuario_apellidos == ''){
+	} else if(apellidos == ''){
 		return false;
-	}else if(usuario_password == ''){
+	}else if(password == ''){
 		return false;
 	}
 

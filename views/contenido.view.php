@@ -49,7 +49,7 @@ $paginas=ceil($paginas);
             </ul>
           </div>
         </div>
-      </nav>
+</nav>
 
 <div class="container my-5">
 

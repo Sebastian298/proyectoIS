@@ -1,8 +1,8 @@
 <?php session_start();
 
-if(isset($_SESSION['usuario'])){
-    header('location: index.php');  //Es por si el usuario inicia sesion e intenta entrar al formulario de registro no pueda acceder a ellos
-}
+// if(isset($_SESSION['usuario'])){
+//     header('location: index.php');  //Es por si el usuario inicia sesion e intenta entrar al formulario de registro no pueda acceder a ellos
+// }
 
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
