@@ -44,7 +44,7 @@ $statement2->execute(array(
 }else if($resultado2!==false){
     // echo 'adm';
     $_SESSION['usuario'] = $usuario;
-    header('Location: registroEmpleado.php');
+    header('Location: dashboard.php');
 }else{
     $errores .= '<li style="color: white;">Datos incorrectos</li>';
 }
