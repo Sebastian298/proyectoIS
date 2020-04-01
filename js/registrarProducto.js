@@ -1,15 +1,18 @@
 var btn_cargar = document.getElementById('btn_cargar_usuarios'),
     editar = document.getElementById('botn'),
 	tabla = document.getElementById('tabla');
-var nombre,apellidos,password;
+var nombre,descripcion,imagen,precio;
+
+cargarUsuarios();
 
 document.getElementById('ID').style.display = 'none';
 document.getElementById('boton').style.display='none';
+document.getElementById('Imagen').style.display='none';
 function cargarUsuarios(){
-	tabla.innerHTML = '<tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Password</th></tr>';
+	tabla.innerHTML = '<tr><th>id</th><th>Nombre</th><th>descripcion</th><th>precio</th><th>imagen</th></tr>';
 
 	var peticion = new XMLHttpRequest();
-	peticion.open('GET', 'leer-datos.php');
+	peticion.open('GET', 'cargarProductos.php');
 
 	loader.classList.add('active');
 
@@ -22,10 +25,11 @@ function cargarUsuarios(){
 		for(var i = 0; i < datos.length; i++){
 		  tabla.innerHTML +=  ` 
           <tr>
-          <th>${datos[i].id}</th>
+          <th>${datos[i].ID}</th>
           <td>${datos[i].nombre}</td>
-          <td>${datos[i].apellidos}</td>
-          <td>${datos[i].password}</td>
+          <td>${datos[i].descripcion}</td>
+          <td>${datos[i].precio}</td>
+          <td>${datos[i].imagen}</td>
 		  <td><button class="btn btn-danger" onclick="validarEliminacion('${datos[i].id}')">Eliminar</button></td>
 		  <td><button class="btn btn-warning" onclick="prueba('${datos[i].id}','${datos[i].nombre}','${datos[i].apellidos}','${datos[i].password}')">Editar</button></td>
           </tr>
@@ -44,42 +48,51 @@ function cargarUsuarios(){
 	peticion.send();
 }
 
-function agregarUsuarios(){
-   var peticion = new XMLHttpRequest();
-   nombre = document.getElementById('nombre').value;
-   apellidos = document.getElementById('Apellidos').value;
-   password = document.getElementById('Password').value;
-   if(formulario_valido()){
-	peticion.open('POST','registroEmpleado.php');
-	var parametros = 'nombre='+ nombre + '&apellidos='+ apellidos +'&password='+ password;
-	peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  
-	peticion.onreadystatechange = ()=>{
-	  if(peticion.readyState == 4 && peticion.status == 200){
-		  alert('Se a capturado el usuario con exito');
-		  cargarUsuarios();
-		}
+function agregarProducto(){
+	var peticion = new XMLHttpRequest();
+	nombre = document.getElementById('Nombre').value;
+	descripcion = document.getElementById('Descripcion').value;
+	precio = document.getElementById('Precio').value;
+	imagen=formulario.Imagen.value = document.getElementById('imagen').files[0].name;
+	if(formulario_valido()){
+	 peticion.open('POST','agregarProducto.php');
+	 var parametros = 'nombre='+ nombre + '&descripcion='+ descripcion +'&precio='+ precio+'&imagen='+ imagen;
+	 peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+   
+	 peticion.onreadystatechange = ()=>{
+	   if(peticion.readyState == 4 && peticion.status == 200){
+		Swal.fire(
+			'Excelente!',
+			'Se a registrado un nuevo producto',
+			'success'
+		  )
+		   cargarUsuarios();
+		   document.getElementById('Nombre').value='';
+		   document.getElementById('Descripcion').value='';
+		   document.getElementById('Precio').value='';
+		   document.getElementById('imagen').value='';
+		 }
+	 }
+   
+	peticion.send(parametros);
+	}else{
+		alert('Error al capturar los datos');
 	}
-  
-   peticion.send(parametros);
-   }else{
-	   alert('Error al capturar los datos');
-   }
-}
+ }
 
-btn_cargar.addEventListener('click', function(){
-	cargarUsuarios();
-});
+
 
 
 
 function formulario_valido(){
 	if(nombre == ''){
 		return false;
-	} else if(apellidos == ''){
+	} else if(descripcion == ''){
 		return false;
-	}else if(password == ''){
+	}else if(precio == ''){
 		return false;
+	}else if(imagen==''){
+       return false;
 	}
 
 	return true;
@@ -209,6 +222,3 @@ function llenar(){
 		
 
 }
-
-
-

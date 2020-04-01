@@ -6,8 +6,10 @@ if(isset($_SESSION['usuario'])){
 
 error_reporting(0);
 
-$id=$_POST['id'];
+$nombre=$_POST['nombre'];
+$descripcion=$_POST['descripcion'];
 $precio = $_POST['precio'];
+$imagen = $_POST['imagen'];
 
 
 	$conexion = new mysqli('localhost', 'root', '');
@@ -18,7 +20,7 @@ $precio = $_POST['precio'];
 		$respuesta = ['error' => true];
 	} else {
 		if($db){
-			$query = "INSERT INTO venta(idProducto,Precio) VALUES('$id','$precio')";
+			$query = "INSERT INTO producto(nombre,descripcion,precio,imagen) VALUES('$nombre','$descripcion','$precio','$imagen')";
 			$ejec = mysqli_query($conexion,$query);
 			if($ejec){
 				$respuesta = [];
@@ -34,5 +36,5 @@ $precio = $_POST['precio'];
 		}
 	}
 
-require 'views/contenido.view.php';
+require 'views/registrarProducto.view.php';
 ?>

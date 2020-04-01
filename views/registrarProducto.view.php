@@ -1,48 +1,23 @@
-<?php
-
-include_once 'conexionContenido.php';
-
-$sql = 'SELECT * FROM producto';
-
-$sentencia = $pdo->prepare($sql);
-
-$sentencia->execute();
-
-$resultado = $sentencia->fetchAll();
-
-$productosPagina = 3;
-
-$totalProductos=$sentencia->rowCount();
-
-$paginas=$totalProductos/$productosPagina;
-// var_dump($resultado);
-$paginas=ceil($paginas);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contenido</title>
+    <title>Registro de Productos</title>
     <script src="https://kit.fontawesome.com/8b850b0e85.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="css/estilosBootstrap.css"> -->
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
-          
+        <h1><i class="fas fa-user-tie text-center font-weight-bold text-info"><br>Administrador</h1></i>
           <a href="cerrar.php" class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" href="cerrar.php"></span>
                 Cerrar Sesión</a>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <h1><a class="nav-link text-center font-weight-bold text-danger" href="cerrar.php">Cerrar Sesión
+                <h1><a class="nav-link font-weight-bold text-danger" href="cerrar.php">Cerrar Sesión
                       <span class="sr-only">(current)</span>
                     </a></h1>
               </li>
@@ -50,87 +25,79 @@ $paginas=ceil($paginas);
           </div>
         </div>
 </nav>
-
 <div class="container my-5">
-
-<h1 class="text-center font-weight-bold text-primary">Registrar Venta</h1>
-
-<?php
-if(!$_GET){
-  header('Location:contenido.php?pagina=1');
-}
-
-if($_GET['pagina']>$paginas||$_GET['pagina']<=0){
-
-  header('Location:contenido.php?pagina=1');
-}
-
-$iniciar = ($_GET['pagina']-1)*$productosPagina;
-
-$sqlProductos = 'SELECT * FROM producto LIMIT :iniciar,:narticulos';
-$sentenciaProductos=$pdo->prepare($sqlProductos);
-$sentenciaProductos->bindParam(':iniciar', $iniciar,PDO::PARAM_INT);
-$sentenciaProductos->bindParam(':narticulos',$productosPagina,PDO::PARAM_INT);
-$sentenciaProductos->execute();
-$resultadoProductos=$sentenciaProductos->fetchAll();
-?>
-<br>
-<br>
-<div class="container" >
-    <div class="row ">
         
-      <div class=" row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center align-self-center">
-      <?php foreach($resultadoProductos AS $producto):?>
-       
-           <div class="card col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" style="max-width:319px;">
-                <img src="img/<?php echo $producto['imagen']?>"
-                     class="card-img-top" alt="Card image"/>
-
-                <div class="card-block text-center">
-                    <h4 class="card-title font-weight-bold text-info">Nombre: <?php echo $producto['nombre']?></h4>
-                    <p class="card-text font-weight-bold text-info">ID: <?php echo $producto['id']?></p>
-                    <p class="card-text font-weight-bold text-info">Descripción: <?php echo $producto['descripcion']?></p>
-                    <p class="card-text font-weight-bold text-info">Precio$: <?php echo $producto['precio']?></p>
-                    <button class="btn btn-warning btn-lg active" onclick="registrarProducto('<?php echo ($producto['id'])?>','<?php  echo($producto['precio'])?>')">Registrar</button>
-                </div>
-            </div>
-            <?php endforeach?>
-          </div>
+		<br>
+		<br>
+		<header>
+			<h1 class="text-center font-weight-bold text-primary">Tabla de Productos</h1>
+			<br>
+			<br>	
+			<!-- <div>
+				<button id="btn_cargar_usuarios" class="btn btn-primary">Cargar Productosq</button>
+			</div> -->
+		</header>
+	<main>
+	<form action="" method="" id="formulario" class="formulario">
+  <input type="text" name="id" id="ID" placeholder="Id"> 
+  <input type="text" name="id" id="Imagen" placeholder="imagen"> 
+    <div class="form-group">
+    <label for="Nombre">Nombre</label>
+    <input type="text" class="form-control w-50" id="Nombre" placeholder="Nombre">
     </div>
-    
+    <div class="form-group">
+    <label for="Descripcion">Descripción</label>
+    <input type="text" class="form-control" id="Descripcion" placeholder="Descripción">
+    </div>
+    <div class="form-group">
+    <label for="Precio">Precio</label>
+    <input type="text" class="form-control w-25" id="Precio" placeholder="Precio">
+    </div>
+    <label for="Precio">Imagen</label>
+    <input type="file" class="form-control-file" id="imagen">
+
+    <br>
+    <br>
+	  <button id="btn" type="button" class="btn btn-success" onclick="agregarProducto()"class="btn">Agregar</button>
+	</form>
+	<button id="boton"onclick="validarEditar()" class="btn btn-warning" id="botn">Editar</button>
+			
+			
+			<!-- <div class="error_box" id="error_box">
+				<p>Se ha producido un error.</p>
+			</div> -->
+			<br>
+			<br>
+			<table class="table my-2">
+        <thead class="thead-dark">
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+            <th>Eliminar</th>
+            <th>Editar</th>
+          </tr>
+        </thead>
+        <tbody id="tabla">
+        </tbody>
+      </table>
+			<div class="loader" id="loader"></div>
+		</main>
 </div>
-
 <br>
 <br>
-</div>
-
-<div class="container">
-  <nav aria-label="...">
-  <ul class="pagination pagination-lg  justify-content-center">
-    <li class="page-item
-    <?php echo $_GET['pagina'] <= 1? 'disabled' : '' ?>">
-      <a class="page-link" 
-      href="contenido.php?pagina=<?php echo $_GET['pagina']-1?>" 
-      tabindex="-1">Anterior</a>
-    </li>
-    <?php for($i=0;$i<$paginas;$i++):?>
-    <li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active': '' ?>"><a class="page-link" 
-    href="contenido.php?pagina=<?php echo $i+1?>">
-      <?php echo $i+1?></a></li>
-    <?php endfor ?>
-    <li class="page-item
-    
-    <?php echo $_GET['pagina']>=$paginas?'disabled':''?>">
-      <a class="page-link" href="contenido.php?pagina=<?php echo $_GET['pagina']+1?>">Siguiente</a>
-    </li>
-  </ul>
-</nav>
-</div>
-
-
 <br>
 <br>
-<!-- Footer -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <footer class="page-footer font-small blue-grey lighten-5">
 
   <div style="background-color: #21d192;">
@@ -206,15 +173,6 @@ $resultadoProductos=$sentenciaProductos->fetchAll();
         <p>
           <a class="dark-grey-text" href="#!">MDBootstrap</a>
         </p>
-        <p>
-          <a class="dark-grey-text" href="#!">MDWordPress</a>
-        </p>
-        <p>
-          <a class="dark-grey-text" href="#!">BrandFlow</a>
-        </p>
-        <p>
-          <a class="dark-grey-text" href="#!">Bootstrap Angular</a>
-        </p>
 
       </div>
       <!-- Grid column -->
@@ -227,15 +185,6 @@ $resultadoProductos=$sentenciaProductos->fetchAll();
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
           <a class="dark-grey-text" href="#!">Your Account</a>
-        </p>
-        <p>
-          <a class="dark-grey-text" href="#!">Become an Affiliate</a>
-        </p>
-        <p>
-          <a class="dark-grey-text" href="#!">Shipping Rates</a>
-        </p>
-        <p>
-          <a class="dark-grey-text" href="#!">Help</a>
         </p>
 
       </div>
@@ -251,11 +200,6 @@ $resultadoProductos=$sentenciaProductos->fetchAll();
           <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
         <p>
           <i class="fas fa-envelope mr-3"></i> info@example.com</p>
-        <p>
-          <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-        <p>
-          <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-
       </div>
       <!-- Grid column -->
 
@@ -274,7 +218,12 @@ $resultadoProductos=$sentenciaProductos->fetchAll();
 </footer>
 <!-- Footer -->
 
-<script src="js/venta.js"></script>
+<script src="js/registrarProducto.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

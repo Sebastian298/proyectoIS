@@ -17,9 +17,9 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="cerrar.php">Cerrar Sesión
+                <a class="nav-link font-weight-bold text-danger" href="cerrar.php"><h2>Cerrar Sesión
                       <span class="sr-only">(current)</span>
-                    </a>
+                    </a></h2>
               </li>
             </ul>
           </div>

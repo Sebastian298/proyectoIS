@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Administración</title>
+    <script src="https://kit.fontawesome.com/8b850b0e85.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
-          
+        <h1><i class="fas fa-user-tie text-center font-weight-bold text-info"><br>Administrador</h1></i>
           <a href="cerrar.php" class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" href="cerrar.php"></span>
                 Cerrar Sesión</a>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="cerrar.php">Cerrar Sesión
+                <h1><a class="nav-link font-weight-bold text-danger" href="cerrar.php">Cerrar Sesión
                       <span class="sr-only">(current)</span>
-                    </a>
+                    </a></h1>
               </li>
             </ul>
           </div>
@@ -29,14 +30,12 @@
 
 <!-- Sidebar -->
 <div class="bg-light border-right" id="sidebar-wrapper">
-  <div class="sidebar-heading">Start Bootstrap </div>
   <div class="list-group list-group-flush">
-    <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-    <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-    <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-    <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-    <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-    <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+    <a href="contenido.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-primary"><h2><i class="fas fa-cash-register"></i><br>Registrar Venta</h2></a>
+    <a href="registroEmpleado.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-success"><h2><i class="fas fa-user-edit"></i><br>Registrar Empleado</h2></a>
+    <a href="registrarProducto.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-danger"><h2><i class="fas fa-tv"></i><br>Registrar Producto</h2></a>
+    <a href="#" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-info"><h2><i class="fas fa-file-invoice-dollar"></i><br>Consultar Ventas</h2></a>
+    <a href="#" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-danger"><h2><i class="fas fa-chart-line"></i><br>Estadisticas de Ventas</h2></a>
   </div>
 </div>
 <!-- /#sidebar-wrapper -->
@@ -56,46 +55,70 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Dropdown
           </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+          </div> -->
         </li>
       </ul>
     </div>
-
+  <br>
+  <br>
   <div class="container-fluid">
-    <h1 class="mt-4">Simple Sidebar</h1>
-    <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
+  <div class="card-deck">
+  <div class="card text-center font-weight-bold text-white bg-info mb-3">
+    <img class="img-fluid" src="img/imgAdm1.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+    </div>
+  </div>
+  <div class="card text-center font-weight-bold text-white bg-primary mb-3">
+    <img class="img-fluid" src="img/imgAdm2.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+    </div>
+  </div>
+  <div class="card text-center font-weight-bold text-white bg-danger mb-3">
+    <img class="img-fluid" src="img/imgAdm3.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="card-deck">
+  <div class="card text-center font-weight-bold text-white bg-info mb-3">
+    <img class="img-fluid" src="img/imgAdm4.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+    </div>
+  </div>
+  <div class="card text-center font-weight-bold text-red bg-warning mb-3">
+    <img class="img-fluid" src="img/imgAdm4.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+    </div>
+  </div>
+  <div class="card text-center font-weight-bold text-white bg-success mb-3">
+    <img class="img-fluid" src="img/imgAdm5.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+    </div>
+  </div>
+</div>
   </div>
   <!-- /#page-content-wrapper -->
 
   <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  
   <footer class="page-footer font-small blue-grey lighten-5">
 
   <div style="background-color: #21d192;">
@@ -239,10 +262,5 @@
 </footer>
 <!-- Footer -->
 </div>
-<br>
-<br>
-<br>
-<br>
-
 </body>
 </html>

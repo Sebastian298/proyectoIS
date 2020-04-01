@@ -3,8 +3,6 @@ console.log('conectado');
 
 
 function registrarProducto(id,precio){
-  
-
   var peticion = new XMLHttpRequest();
   peticion.open('POST','ventaProducto.php');
   var parametros = 'id='+ id+'&precio='+precio;
@@ -12,7 +10,11 @@ function registrarProducto(id,precio){
 
   peticion.onreadystatechange = ()=>{
     if(peticion.readyState == 4 && peticion.status == 200){
-        console.log('Capturado');
+      Swal.fire(
+        'Excelente!',
+        'Se a registrado una nueva venta!',
+        'success'
+      )
       }
   }
 
