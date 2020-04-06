@@ -30,7 +30,7 @@
 		<br>
 		<br>
 		<header>
-			<h1 class="text-center font-weight-bold text-primary">Tabla de Usuarios</h1>
+			<h1 class="text-center font-weight-bold text-primary">Registro de Empleado</h1>
 			<br>
 			<br>	
 			<div>
@@ -56,6 +56,7 @@
 			</div> -->
 			<br>
 			<br>
+      <h1 class="text-center font-weight-bold text-primary">Tabla de Empleados</h1>
 			<table class="table my-2">
         <thead class="thead-dark">
           <tr>

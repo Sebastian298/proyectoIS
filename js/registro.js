@@ -167,7 +167,7 @@ function validarEditar(){
 	  }).then((result) => {
 		if (result.value) {
 		  swalWithBootstrapButtons.fire(
-			'Eliminado!',
+			'Editado!',
 			'El usuario a sido editado.',
 			'Exíto',
 			llenar()

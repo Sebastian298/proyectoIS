@@ -3,12 +3,12 @@ var btn_cargar = document.getElementById('btn_cargar_usuarios'),
 	tabla = document.getElementById('tabla');
 var nombre,descripcion,imagen,precio;
 
-cargarUsuarios();
+cargarProductos();
 
 document.getElementById('ID').style.display = 'none';
 document.getElementById('boton').style.display='none';
 document.getElementById('Imagen').style.display='none';
-function cargarUsuarios(){
+function cargarProductos(){
 	tabla.innerHTML = '<tr><th>id</th><th>Nombre</th><th>descripcion</th><th>precio</th><th>imagen</th></tr>';
 
 	var peticion = new XMLHttpRequest();
@@ -30,8 +30,8 @@ function cargarUsuarios(){
           <td>${datos[i].descripcion}</td>
           <td>${datos[i].precio}</td>
           <td>${datos[i].imagen}</td>
-		  <td><button class="btn btn-danger" onclick="validarEliminacion('${datos[i].id}')">Eliminar</button></td>
-		  <td><button class="btn btn-warning" onclick="prueba('${datos[i].id}','${datos[i].nombre}','${datos[i].apellidos}','${datos[i].password}')">Editar</button></td>
+		  <td><button class="btn btn-danger" onclick="validarEliminacion('${datos[i].ID}')">Eliminar</button></td>
+		  <td><button class="btn btn-warning" onclick="prueba('${datos[i].ID}','${datos[i].nombre}','${datos[i].descripcion}','${datos[i].precio}','${datos[i].imagen}')">Editar</button></td>
           </tr>
           `
 		 }
@@ -66,7 +66,7 @@ function agregarProducto(){
 			'Se a registrado un nuevo producto',
 			'success'
 		  )
-		   cargarUsuarios();
+		   cargarProductos();
 		   document.getElementById('Nombre').value='';
 		   document.getElementById('Descripcion').value='';
 		   document.getElementById('Precio').value='';
@@ -79,9 +79,6 @@ function agregarProducto(){
 		alert('Error al capturar los datos');
 	}
  }
-
-
-
 
 
 function formulario_valido(){
@@ -100,19 +97,21 @@ function formulario_valido(){
 
 function Eliminar(id){
 	var peticion = new XMLHttpRequest();
-	peticion.open('POST', 'eliminarEmpleado.php');
+	peticion.open('POST', 'eliminarProducto.php');
 	var parametros = 'id='+ id;
 	peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	
 	peticion.onreadystatechange = function(){
 		if(peticion.readyState == 4 && peticion.status == 200){
-			cargarUsuarios();
+			cargarProductos();
+		}else{
+			alert("Ocurrio un error inesperado");
 		}
 	}
 	peticion.send(parametros);
 }
 
-function validarEliminacion(nombre){
+function validarEliminacion(id){
 	const swalWithBootstrapButtons = Swal.mixin({
 		customClass: {
 		  confirmButton: 'btn btn-success',
@@ -123,7 +122,7 @@ function validarEliminacion(nombre){
 	  
 	  swalWithBootstrapButtons.fire({
 		title: '¿Estas seguro(a)?',
-		text: "El usuario se eliminara de forma permanente",
+		text: "El producto se eliminara de forma permanente",
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonText: 'Sí, ¡Borrar!',
@@ -133,9 +132,9 @@ function validarEliminacion(nombre){
 		if (result.value) {
 		  swalWithBootstrapButtons.fire(
 			'Eliminado!',
-			'El usuario a sido eliminado.',
+			'El producto a sido eliminado.',
 			'Exíto',
-			Eliminar(nombre)
+			Eliminar(id)
 		  )
 		} else if (
 		  /* Read more about handling dismissals below */
@@ -143,21 +142,21 @@ function validarEliminacion(nombre){
 		) {
 		  swalWithBootstrapButtons.fire(
 			'Cancelado',
-			'El usuario no a sido eliminado:)',
+			'El producto no a sido eliminado:)',
 			'error'
 		  )
 		}
 	  })
 }
 
-function prueba(id,nombre,apellidos,password){
+function prueba(id,nombre,descripcion,precio,imagen){
 	document.getElementById('boton').style.display='block';
 	document.getElementById('btn').style.display='none';
-	formulario.id.value=id;
-	formulario.nombre.value = nombre;
-	formulario.apellidos.value=apellidos;
-	formulario.password.value=password;
-
+	formulario.ID.value=id;
+	formulario.Nombre.value = nombre;
+	formulario.Descripcion.value=descripcion;
+	formulario.Precio.value=precio;
+	document.getElementById('Imagen').value=imagen;
 }
 
 function validarEditar(){
@@ -171,7 +170,7 @@ function validarEditar(){
 	  
 	  swalWithBootstrapButtons.fire({
 		title: '¿Estas seguro(a)?',
-		text: "Los datos del usuario se editaran",
+		text: "Los datos del producto se editaran",
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonText: 'Sí, ¡Editar!',
@@ -180,8 +179,8 @@ function validarEditar(){
 	  }).then((result) => {
 		if (result.value) {
 		  swalWithBootstrapButtons.fire(
-			'Eliminado!',
-			'El usuario a sido editado.',
+			'Editado!',
+			'El producto a sido editado.',
 			'Exíto',
 			llenar()
 		  )
@@ -191,7 +190,7 @@ function validarEditar(){
 		) {
 		  swalWithBootstrapButtons.fire(
 			'Cancelado',
-			'El usuario no a sido editado:)',
+			'El producto no a sido editado:)',
 			'error'
 		  )
 		}
@@ -199,20 +198,28 @@ function validarEditar(){
 }
 
 function llenar(){
-	var ident = formulario.id.value;
-	var Nombre = formulario.nombre.value;
-	var Apellidos = formulario.apellidos.value;
-	var pass = formulario.password.value; 
+	var ident = formulario.ID.value;
+	var nombre = formulario.Nombre.value;
+	var bandera = document.getElementById('imagen').value;
+	var imagen;
+	var descripcion = formulario.Descripcion.value;
+	var precio = formulario.Precio.value;
+	if(bandera==''){
+		imagen = document.getElementById('Imagen').value;
+	}else{
+		document.getElementById('Imagen').value=document.getElementById("imagen").files[0].name;
+		imagen= document.getElementById('Imagen').value;
+	}
 	var peticion = new XMLHttpRequest();
-	peticion.open('POST', 'updateEmpleado.php');
-	var parametros = 'id='+ ident+'&nombre='+ Nombre+'&apellidos='+ Apellidos+'&password='+ pass;
+	peticion.open('POST', 'updateProducto.php');
+	var parametros = 'id='+ ident+'&nombre='+ nombre+'&descripcion='+ descripcion+'&precio='+ precio+'&imagen='+ imagen;
 	peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	peticion.onreadystatechange = ()=>{
 		if(peticion.readyState == 4 && peticion.status == 200){
-			cargarUsuarios();
-		    formulario.nombre.value = '';
-			formulario.apellidos.value = '';
-			formulario.password.value = '';
+			cargarProductos();
+		    formulario.Nombre.value = '';
+			formulario.Descripcion.value = '';
+			formulario.Precio.value = '';
 			document.getElementById('boton').style.display='none';
 			document.getElementById('btn').style.display='block';
 			}

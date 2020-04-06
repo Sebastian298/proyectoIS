@@ -30,7 +30,7 @@
 		<br>
 		<br>
 		<header>
-			<h1 class="text-center font-weight-bold text-primary">Tabla de Productos</h1>
+			<h1 class="text-center font-weight-bold text-primary">Registro de Productos</h1>
 			<br>
 			<br>	
 			<!-- <div>
@@ -53,7 +53,7 @@
     <label for="Precio">Precio</label>
     <input type="text" class="form-control w-25" id="Precio" placeholder="Precio">
     </div>
-    <label for="Precio">Imagen</label>
+    <label for="imagen">Imagen</label>
     <input type="file" class="form-control-file" id="imagen">
 
     <br>
@@ -68,6 +68,7 @@
 			</div> -->
 			<br>
 			<br>
+      <h1 class="text-center font-weight-bold text-primary">Tabla de Productos</h1>
 			<table class="table my-2">
         <thead class="thead-dark">
           <tr>
