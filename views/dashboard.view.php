@@ -26,6 +26,7 @@
           </div>
         </div>
 </nav>
+
 <div class="d-flex" id="wrapper">
 
 <!-- Sidebar -->
@@ -34,8 +35,8 @@
     <a href="contenido.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-primary"><h2><i class="fas fa-cash-register"></i><br>Registrar Venta</h2></a>
     <a href="registroEmpleado.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-success"><h2><i class="fas fa-user-edit"></i><br>Registrar Empleado</h2></a>
     <a href="registrarProducto.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-danger"><h2><i class="fas fa-tv"></i><br>Registrar Producto</h2></a>
-    <a href="#" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-info"><h2><i class="fas fa-file-invoice-dollar"></i><br>Consultar Ventas</h2></a>
-    <a href="#" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-danger"><h2><i class="fas fa-chart-line"></i><br>Estadisticas de Ventas</h2></a>
+    <a href="ConsultarVentas.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-info"><h2><i class="fas fa-file-invoice-dollar"></i><br>Consultar Ventas</h2></a>
+    <a href="graficas.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-danger"><h2><i class="fas fa-chart-line"></i><br>Estadísticas de Ventas</h2></a>
   </div>
 </div>
 <!-- /#sidebar-wrapper -->

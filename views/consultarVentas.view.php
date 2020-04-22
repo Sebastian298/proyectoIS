@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Productos</title>
+    <title>Consulta de Ventas</title>
     <script src="https://kit.fontawesome.com/8b850b0e85.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -25,67 +25,48 @@
           </div>
         </div>
 </nav>
+<br>
+<br>
+<br>
+<h1 class="text-center font-weight-bold text-primary">Consulta de Ventas</h1>
+<br>
+<br>
+<br>
+<input type="text" id="venta">
+<div class="container">    
+  <div class="dropdown">
+    <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Mostrar Ventas
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><button type="button" class="btn btn-outline-primary btn-lg btn-block" onclick="mostrarHoy()">Hoy</button></li><br>
+      <li><button type="button" class="btn btn-outline-success btn-lg btn-block" onclick="mostrarAyer()">Ayer</button></li><br>
+      <li><button type="button" class="btn btn-outline-info btn-lg btn-block" onclick="mostrarSemana()">Semana</button></li><br>
+      <li><button type="button" class="btn btn-outline-dark btn-lg btn-block" onclick="mostrarMes()">Mes</button></li>
+    </ul>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="container my-5">
-        
-		<br>
-		<br>
-		<header>
-			<h1 class="text-center font-weight-bold text-primary">Registro de Productos</h1>
-			<br>
-			<br>	
-			<!-- <div>
-				<button id="btn_cargar_usuarios" class="btn btn-primary">Cargar Productosq</button>
-			</div> -->
-		</header>
-	<main>
-	<form action="" method="" id="formulario" class="formulario">
-  <input type="text" name="id" id="ID" placeholder="Id"> 
-  <input type="text" name="id" id="Imagen" placeholder="imagen"> 
-    <div class="form-group">
-    <label for="Nombre">Nombre</label>
-    <input type="text" class="form-control w-50" id="Nombre" placeholder="Nombre">
-    </div>
-    <div class="form-group">
-    <label for="Descripcion">Descripción</label>
-    <input type="text" class="form-control" id="Descripcion" placeholder="Descripción">
-    </div>
-    <div class="form-group">
-    <label for="Precio">Precio</label>
-    <input type="text" class="form-control w-25" id="Precio" placeholder="Precio">
-    </div>
-    <label for="imagen">Imagen</label>
-    <input type="file" class="form-control-file" id="imagen">
-
-    <br>
-    <br>
-	  <button id="btn" type="button" class="btn btn-success" onclick="agregarProducto()"class="btn">Agregar</button>
-	</form>
-	<button id="boton"onclick="validarEditar()" class="btn btn-warning" id="botn">Editar</button>
-			
-			
-			<!-- <div class="error_box" id="error_box">
-				<p>Se ha producido un error.</p>
-			</div> -->
-			<br>
-			<br>
-      <h1 class="text-center font-weight-bold text-primary">Tabla de Productos</h1>
-			<table class="table my-2">
-        <thead class="thead-dark">
-          <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Imagen</th>
-            <th>Eliminar</th>
-            <th>Editar</th>
-          </tr>
-        </thead>
-        <tbody id="tabla">
-        </tbody>
-      </table>
-			<div class="loader" id="loader"></div>
-		</main>
+  <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Id Producto</th>
+      <th>Precio</th>
+      <th>Fecha de Venta</th>
+    </tr>
+  </thead>
+  <tbody id="tabla">
+  </tbody>
+ </table>
 </div>
 <br>
 <br>
@@ -98,7 +79,12 @@
 <br>
 <br>
 <br>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <footer class="page-footer font-small blue-grey lighten-5">
 
   <div style="background-color: #21d192;">
@@ -217,14 +203,13 @@
   <!-- Copyright -->
 
 </footer>
-<!-- Footer -->
-
-<script src="js/registrarProducto.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="js/venta.js"></script>
+<script src="js/ventas.js"></script> 
+<script src="js/ventaSemana.js"></script>
+<script src="js/ventasAyer.js"></script>
+<script src="js/ventaMes.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 </body>
 </html>

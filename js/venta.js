@@ -1,6 +1,7 @@
 console.log('conectado');
 
-
+document.getElementById('venta').style.display='none';
+mostrarVentas();
 
 function registrarProducto(id,precio){
   var peticion = new XMLHttpRequest();
@@ -21,3 +22,32 @@ function registrarProducto(id,precio){
  peticion.send(parametros);
 
 }
+
+function mostrarVentas(){
+	tabla.innerHTML = '<tr><th>Id Producto</th><th>Precio</th><th>Fecha de Venta</th></tr>';
+
+	var peticion = new XMLHttpRequest();
+	peticion.open('GET', 'leerVentas.php');
+
+	peticion.onload = function(){
+		var datos = JSON.parse(peticion.responseText);
+		tabla.innerHTML='';
+		if(datos.error){
+			error_box.classList.add('active');
+		} else {
+		for(var i = 0; i < datos.length; i++){
+		  tabla.innerHTML +=  ` 
+          <tr>
+          <th>${datos[i].IdProducto}</th>
+          <td>$${datos[i].Precio}</td>
+          <td>${datos[i].fecha}</td>
+          </tr>
+          `
+		 }
+		}
+		
+	}
+
+	peticion.send();
+}
+

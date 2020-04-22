@@ -28,7 +28,7 @@ function cargarProductos(){
           <th>${datos[i].ID}</th>
           <td>${datos[i].nombre}</td>
           <td>${datos[i].descripcion}</td>
-          <td>${datos[i].precio}</td>
+          <td>$${datos[i].precio}</td>
           <td>${datos[i].imagen}</td>
 		  <td><button class="btn btn-danger" onclick="validarEliminacion('${datos[i].ID}')">Eliminar</button></td>
 		  <td><button class="btn btn-warning" onclick="prueba('${datos[i].ID}','${datos[i].nombre}','${datos[i].descripcion}','${datos[i].precio}','${datos[i].imagen}')">Editar</button></td>
@@ -104,8 +104,6 @@ function Eliminar(id){
 	peticion.onreadystatechange = function(){
 		if(peticion.readyState == 4 && peticion.status == 200){
 			cargarProductos();
-		}else{
-			alert("Ocurrio un error inesperado");
 		}
 	}
 	peticion.send(parametros);
@@ -134,7 +132,9 @@ function validarEliminacion(id){
 			'Eliminado!',
 			'El producto a sido eliminado.',
 			'Exíto',
-			Eliminar(id)
+			Eliminar(id),
+			cargarProductos(),
+			
 		  )
 		} else if (
 		  /* Read more about handling dismissals below */

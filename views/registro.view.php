@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8b850b0e85.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<!-- <link rel="stylesheet" href="css/estilos.css"> -->
     <title>Registro de Empleado</title>
@@ -10,16 +11,16 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
-          
+        <h1><i class="fas fa-user-tie text-center font-weight-bold text-info"><br><a class="nav-link font-weight-bold text-info" href="dashboard.php">Administrador</h1></a></i>
           <a href="cerrar.php" class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" href="cerrar.php"></span>
                 Cerrar Sesión</a>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link font-weight-bold text-danger" href="cerrar.php"><h2>Cerrar Sesión
+                <h1><a class="nav-link font-weight-bold text-danger" href="cerrar.php">Cerrar Sesión
                       <span class="sr-only">(current)</span>
-                    </a></h2>
+                    </a></h1>
               </li>
             </ul>
           </div>
