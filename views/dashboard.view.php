@@ -195,15 +195,6 @@
         <p>
           <a class="dark-grey-text" href="#!">MDBootstrap</a>
         </p>
-        <p>
-          <a class="dark-grey-text" href="#!">MDWordPress</a>
-        </p>
-        <p>
-          <a class="dark-grey-text" href="#!">BrandFlow</a>
-        </p>
-        <p>
-          <a class="dark-grey-text" href="#!">Bootstrap Angular</a>
-        </p>
 
       </div>
       <!-- Grid column -->
@@ -216,15 +207,6 @@
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
           <a class="dark-grey-text" href="#!">Your Account</a>
-        </p>
-        <p>
-          <a class="dark-grey-text" href="#!">Become an Affiliate</a>
-        </p>
-        <p>
-          <a class="dark-grey-text" href="#!">Shipping Rates</a>
-        </p>
-        <p>
-          <a class="dark-grey-text" href="#!">Help</a>
         </p>
 
       </div>
@@ -240,11 +222,6 @@
           <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
         <p>
           <i class="fas fa-envelope mr-3"></i> info@example.com</p>
-        <p>
-          <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-        <p>
-          <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-
       </div>
       <!-- Grid column -->
 
@@ -261,7 +238,5 @@
   <!-- Copyright -->
 
 </footer>
-<!-- Footer -->
-</div>
 </body>
 </html>
