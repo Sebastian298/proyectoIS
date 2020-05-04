@@ -6,7 +6,8 @@ if(isset($_SESSION['usuario'])){
 
 error_reporting(0);
 
-$id=$_POST['id'];
+$id = $_POST['id'];
+$nombreProducto=$_POST['nombreProducto'];
 $precio = $_POST['precio'];
 
 
@@ -18,7 +19,7 @@ $precio = $_POST['precio'];
 		$respuesta = ['error' => true];
 	} else {
 		if($db){
-			$query = "INSERT INTO venta(idProducto,Precio) VALUES('$id','$precio')";
+			$query = "INSERT INTO venta(idProducto,Nombre_Producto,Precio) VALUES('$id','$nombreProducto','$precio')";
 			$ejec = mysqli_query($conexion,$query);
 			if($ejec){
 				$respuesta = [];

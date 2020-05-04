@@ -68,7 +68,7 @@ while($row=$stat->fetch(PDO::FETCH_ASSOC)){
 <br>
 <br>
 <br>
-<canvas id="myChart">
+<canvas id="myChart" width="400" height="150">
 
 </canvas> 
 <br>
@@ -232,7 +232,7 @@ var chartOptions = {
     display: true,
     position: 'top',
     labels: {
-      boxWidth: 80,
+      boxWidth: 40,
       fontColor: 'black'
     }
   }
@@ -241,7 +241,16 @@ var chartOptions = {
 var lineChart = new Chart(speedCanvas, {
   type: 'line',
   data: speedData,
-  options: chartOptions
+  options: {
+    layout: {
+            padding: {
+                left: 50,
+                right: 0,
+                top: 0,
+                bottom: 0
+            }
+        }
+  }
 });
 </script>
 </body>

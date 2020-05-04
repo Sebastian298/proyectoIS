@@ -3,6 +3,7 @@ var btn_cargar = document.getElementById('btn_cargar_usuarios'),
 	tabla = document.getElementById('tabla');
 var nombre,apellidos,password;
 
+
 document.getElementById('ID').style.display = 'none';
 document.getElementById('boton').style.display='none';
 function cargarUsuarios(){
@@ -56,8 +57,7 @@ function agregarUsuarios(){
   
 	peticion.onreadystatechange = ()=>{
 	  if(peticion.readyState == 4 && peticion.status == 200){
-		  alert('Se a capturado el usuario con exito');
-		  cargarUsuarios();
+		   cargarUsuarios();
 		}
 	}
   

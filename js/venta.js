@@ -1,12 +1,12 @@
 console.log('conectado');
 
-document.getElementById('venta').style.display='none';
-mostrarVentas();
 
-function registrarProducto(id,precio){
+
+
+function registrarProducto(nombre,precio,id){
   var peticion = new XMLHttpRequest();
   peticion.open('POST','ventaProducto.php');
-  var parametros = 'id='+ id+'&precio='+precio;
+  var parametros = 'nombreProducto='+ nombre+'&precio='+precio+'&id='+id;
   peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
   peticion.onreadystatechange = ()=>{

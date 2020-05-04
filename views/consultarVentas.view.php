@@ -32,7 +32,7 @@
 <br>
 <br>
 <br>
-<input type="text" id="venta">
+<!-- <input type="text" id="venta"> -->
 <div class="container">    
   <div class="dropdown">
     <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Mostrar Ventas
