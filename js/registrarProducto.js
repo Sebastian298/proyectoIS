@@ -54,29 +54,33 @@ function agregarProducto(){
 	descripcion = document.getElementById('Descripcion').value;
 	precio = document.getElementById('Precio').value;
 	imagen=formulario.Imagen.value = document.getElementById('imagen').files[0].name;
-	if(formulario_valido()){
+	if(formulario_valido() && validarCaptura()){
 	 peticion.open('POST','agregarProducto.php');
 	 var parametros = 'nombre='+ nombre + '&descripcion='+ descripcion +'&precio='+ precio+'&imagen='+ imagen;
 	 peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
    
-	 peticion.onreadystatechange = ()=>{
-	   if(peticion.readyState == 4 && peticion.status == 200){
-		Swal.fire(
+	   peticion.onreadystatechange = ()=>{
+	    if(peticion.readyState == 4 && peticion.status == 200){
+		  Swal.fire(
 			'Excelente!',
 			'Se a registrado un nuevo producto',
 			'success'
-		  )
+		   )
 		   cargarProductos();
 		   document.getElementById('Nombre').value='';
 		   document.getElementById('Descripcion').value='';
 		   document.getElementById('Precio').value='';
 		   document.getElementById('imagen').value='';
-		 }
-	 }
+		}
+	   }
    
-	peticion.send(parametros);
+	 peticion.send(parametros);
 	}else{
-		alert('Error al capturar los datos');
+		Swal.fire(
+			'Error!',
+			'Recuerda que el nombre y apellidos no pude llevar números',
+			'error'
+		  )
 	}
  }
 
@@ -93,6 +97,17 @@ function formulario_valido(){
 	}
 
 	return true;
+}
+
+function validarCaptura(){
+	if(isNaN(nombre)){
+        if(isNaN(descripcion)){
+           return true;
+		}else{
+			return false;
+		}
+	}
+	return false
 }
 
 function Eliminar(id){

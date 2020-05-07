@@ -33,20 +33,17 @@
 		<header>
 			<h1 class="text-center font-weight-bold text-primary">Registro de Empleado</h1>
 			<br>
-			<br>	
-			<div>
-				<button id="btn_cargar_usuarios" class="btn btn-primary">Cargar Usuarios</button>
-			</div>
+			<br>
 		</header>
 		<br>
 		<br>
 		<main>
-			<form action="" method="POST" id="formulario" class="formulario">
+			<form action="" method="" id="formulario" class="formulario">
 			    <input type="text" name="id" id="ID" placeholder="Id"> 
 				<input type="text" name="nombre" id="nombre" placeholder="Nombre">
 				<input type="text" name="apellidos" id="Apellidos" placeholder="Apellidos">
 				<input type="password" name="password" id="Password" placeholder="Password">
-				<button id="btn" type="submit" class="btn btn-success" onclick="agregarUsuarios()"class="btn">Agregar</button>
+				<button id="btn" type="button" class="btn btn-success" onclick="agregarUsuarios()"class="btn">Agregar</button>
 			</form>
 			
 			<button id="boton"onclick="validarEditar()" class="btn btn-warning" id="botn">Editar</button>
@@ -72,7 +69,6 @@
         <tbody id="tabla">
         </tbody>
       </table>
-			<div class="loader" id="loader"></div>
 		</main>
 </div>
 <br>

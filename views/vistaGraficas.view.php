@@ -29,36 +29,35 @@
   <br>
   <h1 class="text-center font-weight-bold text-info">Vista Estadística de las ventas</h1>
   
-  <br>
   <div class="container my-5" style="background: black; width: 940px; padding: 25px;">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-4">
                  <div class="card text-white bg-dark text-center" style="width: 18rem;">
                      <img src="img/graficaLineas.png" style="height: 150px;" class="card-img-top" alt="Gráfica">
                        <div class="card-body">
                          <h5 class="card-title text-warning">Ventas de Hoy y Ayer</h5><br>
                           <p class="card-text" style="font-size: 20px;">Se visualizara por medio de una gráfica de puntos las ventas que se realizaron, mostrando el Id del producto vendido y su precio</p>
-                         <a href="views/graficas.view.php" class="btn btn-info align-self-center">Entrar</a>
+                         <a href="graficaLineas.php" class="btn btn-info align-self-center">Entrar</a>
                         </div>
                     </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-4">
                  <div class="card text-white bg-dark text-center" style="width: 18rem;">
                      <img src="img/graficaBarras.webp" style="height: 150px;" class="card-img-top" alt="Gráfica">
                        <div class="card-body">
                          <h5 class="card-title text-warning">Productos con más ventas</h5><br>
                           <p class="card-text" style="font-size: 20px;">Se van a poder visualizar por medio de una gráfica de barras la cantidad de ventas de cada producto basado en la jornada laboral actual</p>
-                         <a href="views/graficaBarras.view.php" class="btn btn-info align-self-center">Entrar</a>
+                         <a href="graficaBarras.php" class="btn btn-info align-self-center">Entrar</a>
                         </div>
                     </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-4">
                  <div class="card text-white bg-dark text-center" style="width: 18rem;">
                      <img src="img/graficaPastel.png" style="height: 150px;" class="card-img-top" alt="Gráfica">
                        <div class="card-body">
                          <h5 class="card-title text-warning">Ganancias totales por producto</h5>
-                          <p class="card-text" style="font-size: 20px;">Se van a poder visualizar por medio de una gráfica circular las ganancias totales de los productos actuales, basado en las ventas del día</p>
-                         <a href="views/graficas.view.php" class="btn btn-info align-self-center">Entrar</a>
+                          <p class="card-text" style="font-size: 20px;">Se van a poder visualizar por medio de una gráfica circular las ganancias totales de los productos actuales, basado en las ventas del mes</p>
+                         <a href="graficaCircular.php" class="btn btn-info align-self-center">Entrar</a>
                         </div>
                     </div>
             </div>

@@ -195,7 +195,9 @@ while($row=$stat->fetch(PDO::FETCH_ASSOC)){
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script>
-// 
+
+// function actualizar(){location.reload(true);}
+//      setInterval("actualizar()",1000);
 var speedCanvas = document.getElementById("myChart");
 
 Chart.defaults.global.defaultFontFamily = "Lato";

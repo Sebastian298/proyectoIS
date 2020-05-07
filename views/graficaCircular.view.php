@@ -11,9 +11,7 @@ try{
    die($ex->getMessage());
 }
 
-$statement = $dbcon->prepare("SELECT * from venta 
-WHERE idProducto IN(SELECT idProducto FROM venta 
-WHERE idProducto IN(SELECT idProducto FROM venta GROUP BY idProducto HAVING COUNT(*) >=2)) AND DATE(fecha) = CURRENT_DATE() GROUP BY idProducto");
+$statement = $dbcon->prepare("SELECT Nombre_Producto , sum(Precio) AS Total From venta WHERE MONTH(fecha) = MONTH(NOW()) Group by Nombre_Producto");
 $statement->execute();
 $json=[];
 $json2=[];
@@ -21,11 +19,10 @@ $json2=[];
 while($row=$statement->fetch(PDO::FETCH_ASSOC)){
   extract($row);
   $json[]=$Nombre_Producto;
-  $json2[]=$Precio;
+  $json2[]=$Total;
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +33,7 @@ while($row=$statement->fetch(PDO::FETCH_ASSOC)){
     <title>Estadísticas</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
         <h1><i class="fas fa-user-tie text-center font-weight-bold text-info"><br><a class="nav-link font-weight-bold text-info" href="dashboard.php">Administrador</h1></a></i>
           <a href="cerrar.php" class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,12 +49,61 @@ while($row=$statement->fetch(PDO::FETCH_ASSOC)){
             </ul>
           </div>
         </div>
-</nav>
+ </nav>
+  <br>
+  <h1 class="text-center font-weight-bold text-info">Ganancias totales por producto durante el mes</h1>
   <br>
   <br>
-  <h1 class="text-center font-weight-bold text-info">Productos con más ventas en este día</h1>
-  <br>
-  <canvas id="myChart" width="400" height="150"></canvas>
+ <canvas id="myChart" width="400" height="150"></canvas>
+
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+ <script>
+  //  function actualizar(){location.reload(true);}
+
+  // setInterval("actualizar()",1000);
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: <?php echo json_encode($json)?>,
+        datasets: [{
+            label: '# of Votes',
+            data: <?php echo json_encode($json2)?>,
+            backgroundColor: [
+                'rgb(97, 11, 75)',
+                'rgb(254, 46, 100)',
+                'rgb(46, 100, 254)',
+                'rgb(8, 138, 75)',
+                'rgb(4, 180, 174)',
+                'rgb(28, 28, 28)',
+                'rgb(11, 76, 95)',
+                'rgb(138, 41, 8)'
+                
+            ],
+            borderColor: [
+                'rgb(97, 11, 75)',
+                'rgb(254, 46, 100)',
+                'rgb(46, 100, 254)',
+                'rgb(8, 138, 75)',
+                'rgb(4, 180, 174)',
+                'rgb(28, 28, 28)',
+                'rgb(11, 76, 95)',
+                'rgb(138, 41, 8)'
+            ],
+            borderWidth: 2
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+  });
+ </script> 
  <br>
  <br>
  <br>
@@ -181,50 +227,5 @@ while($row=$statement->fetch(PDO::FETCH_ASSOC)){
   <!-- Copyright -->
 
 </footer>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
-  <script>
-     
-    //  function actualizar(){location.reload(true);}
-    //  setInterval("actualizar()",1000);
-     var ctx = document.getElementById('myChart').getContext('2d');
-     var chart = new Chart(ctx, {
-    type: 'bar',
-
-    data: {
-        labels: <?php echo json_encode($json)?>,
-        datasets: [{
-            label: 'Precio de los productos más vendidos',
-            backgroundColor: ['rgb(97, 11, 75)',
-                'rgb(254, 46, 100)',
-                'rgb(46, 100, 254)',
-                'rgb(8, 138, 75)',
-                'rgb(4, 180, 174)',
-                'rgb(28, 28, 28)',
-                'rgb(11, 76, 95)',
-                'rgb(138, 41, 8)'],
-            borderColor: ['rgb(97, 11, 75)',
-                'rgb(254, 46, 100)',
-                'rgb(46, 100, 254)',
-                'rgb(8, 138, 75)',
-                'rgb(4, 180, 174)',
-                'rgb(28, 28, 28)',
-                'rgb(11, 76, 95)',
-                'rgb(138, 41, 8)'],
-            data: <?php echo json_encode($json2)?>
-        }]
-    },
-    options: {
-        layout: {
-            padding: {
-                left: 50,
-                right: 0,
-                top: 0,
-                bottom: 0
-            }
-        }
-    }
-});
-  </script>
 </body>
 </html>

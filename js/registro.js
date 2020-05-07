@@ -1,18 +1,18 @@
-var btn_cargar = document.getElementById('btn_cargar_usuarios'),
-    editar = document.getElementById('botn'),
-	tabla = document.getElementById('tabla');
-var nombre,apellidos,password;
+var editar = document.getElementById('botn'),
+tabla = document.getElementById('tabla');
 
+var nombre,apellidos,password;
 
 document.getElementById('ID').style.display = 'none';
 document.getElementById('boton').style.display='none';
+
+cargarUsuarios();
+
 function cargarUsuarios(){
-	tabla.innerHTML = '<tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Password</th></tr>';
+	tabla.innerHTML = '<tr><th>Id</th><th>Nombre</th><th>Apellidos</th><th>Password</th><th>Eliminar</th><th>Editar</th></tr>';
 
 	var peticion = new XMLHttpRequest();
 	peticion.open('GET', 'leer-datos.php');
-
-	loader.classList.add('active');
 
 	peticion.onload = function(){
 		var datos = JSON.parse(peticion.responseText);
@@ -24,22 +24,16 @@ function cargarUsuarios(){
 		  tabla.innerHTML +=  ` 
           <tr>
           <th>${datos[i].id}</th>
-          <td>${datos[i].nombre}</td>
-          <td>${datos[i].apellidos}</td>
-          <td>${datos[i].password}</td>
+		  <td>${datos[i].nombre}</td>
+		  <td>${datos[i].apellidos}</td>
+		  <td>${datos[i].password}</td>
 		  <td><button class="btn btn-danger" onclick="validarEliminacion('${datos[i].id}')">Eliminar</button></td>
-		  <td><button class="btn btn-warning" onclick="prueba('${datos[i].id}','${datos[i].nombre}','${datos[i].apellidos}','${datos[i].password}')">Editar</button></td>
+		  <td><button class="btn btn-warning" onclick="Cargar('${datos[i].id}','${datos[i].nombre}','${datos[i].apellidos}','${datos[i].password}')">Editar</button></td>
           </tr>
           `
 		 }
 		}
 		
-	}
-
-	peticion.onreadystatechange = function(){
-		if(peticion.readyState == 4 && peticion.status == 200){
-			loader.classList.remove('active');
-		}
 	}
 
 	peticion.send();
@@ -50,28 +44,47 @@ function agregarUsuarios(){
    nombre = document.getElementById('nombre').value;
    apellidos = document.getElementById('Apellidos').value;
    password = document.getElementById('Password').value;
-   if(formulario_valido()){
+   if(formulario_valido()&&validarCaptura()){
 	peticion.open('POST','registroEmpleado.php');
 	var parametros = 'nombre='+ nombre + '&apellidos='+ apellidos +'&password='+ password;
 	peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   
 	peticion.onreadystatechange = ()=>{
 	  if(peticion.readyState == 4 && peticion.status == 200){
+		Swal.fire(
+			'Excelente!',
+			'Se a registrado un nuevo empleado!',
+			'success'
+		  )
 		   cargarUsuarios();
+		   formulario.nombre.value = '';
+			formulario.apellidos.value = '';
+			formulario.password.value = '';
 		}
 	}
   
    peticion.send(parametros);
    }else{
-	   alert('Error al capturar los datos');
+	Swal.fire(
+		'Error!',
+		'No a capturado correctamente algún campo o lo dejo vacio',
+		'error'
+	  )
+	  formulario.nombre.value = '';
+	  formulario.apellidos.value = '';
    }
 }
 
-btn_cargar.addEventListener('click', function(){
-	cargarUsuarios();
-});
-
-
+function validarCaptura(){
+	if(isNaN(nombre)){
+        if(isNaN(apellidos)){
+           return true;
+		}else{
+			return false;
+		}
+	}
+	return false
+}
 
 function formulario_valido(){
 	if(nombre == ''){
@@ -84,6 +97,7 @@ function formulario_valido(){
 
 	return true;
 }
+
 
 function Eliminar(id){
 	var peticion = new XMLHttpRequest();
@@ -99,7 +113,7 @@ function Eliminar(id){
 	peticion.send(parametros);
 }
 
-function validarEliminacion(nombre){
+function validarEliminacion(id){
 	const swalWithBootstrapButtons = Swal.mixin({
 		customClass: {
 		  confirmButton: 'btn btn-success',
@@ -122,7 +136,7 @@ function validarEliminacion(nombre){
 			'Eliminado!',
 			'El usuario a sido eliminado.',
 			'Exíto',
-			Eliminar(nombre)
+			Eliminar(id)
 		  )
 		} else if (
 		  /* Read more about handling dismissals below */
@@ -137,7 +151,7 @@ function validarEliminacion(nombre){
 	  })
 }
 
-function prueba(id,nombre,apellidos,password){
+function Cargar(id,nombre,apellidos,password){
 	document.getElementById('boton').style.display='block';
 	document.getElementById('btn').style.display='none';
 	formulario.id.value=id;
@@ -170,7 +184,7 @@ function validarEditar(){
 			'Editado!',
 			'El usuario a sido editado.',
 			'Exíto',
-			llenar()
+			Editar()
 		  )
 		} else if (
 		  /* Read more about handling dismissals below */
@@ -185,7 +199,7 @@ function validarEditar(){
 	  })
 }
 
-function llenar(){
+function Editar(){
 	var ident = formulario.id.value;
 	var Nombre = formulario.nombre.value;
 	var Apellidos = formulario.apellidos.value;
