@@ -1,7 +1,7 @@
 var nombres = [];
 var precios = [];
 let contador =0;
-  function Peticion(){
+function Peticion(){
     var peticion = new XMLHttpRequest();
     peticion.open('GET', 'consultarCircular.php');
     peticion.onload = function(){
@@ -21,8 +21,6 @@ let contador =0;
         }
     }
    peticion.send();
-   console.log(nombres);
-   console.log(precios);
    var ctx = document.getElementById('myChart').getContext('2d');
      var chart = new Chart(ctx, {
      type: 'pie',
@@ -58,10 +56,11 @@ let contador =0;
                 top: 0,
                 bottom: 0
             }
-        }
+        },animation:false
+        
     }
    });
   
 }
 Peticion();
-setInterval(Peticion, 3000);
+setInterval(Peticion, 1000);

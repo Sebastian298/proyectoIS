@@ -58,11 +58,11 @@ let contador =0;
                 top: 0,
                 bottom: 0
             }
-        }
+        },animation:false
     }
    });
   
 }
 Peticion();
-setInterval(Peticion, 3000);
+setInterval(Peticion, 1000);
     
