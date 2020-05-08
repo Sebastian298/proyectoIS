@@ -1,31 +1,3 @@
-<?php
-$host='localhost';
-$dbname='laredohits';
-$user='root';
-$pass='';
-
-try{
-    $dbcon= new PDO("mysql:host={$host};dbname={$dbname}",$user,$pass);
-    $dbcon->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-}catch(PDOException $ex){
-   die($ex->getMessage());
-}
-
-$statement = $dbcon->prepare("SELECT * from venta 
-WHERE idProducto IN(SELECT idProducto FROM venta 
-WHERE idProducto IN(SELECT idProducto FROM venta GROUP BY idProducto HAVING COUNT(*) >=2)) AND DATE(fecha) = CURRENT_DATE() GROUP BY idProducto");
-$statement->execute();
-$json=[];
-$json2=[];
-
-while($row=$statement->fetch(PDO::FETCH_ASSOC)){
-  extract($row);
-  $json[]=$Nombre_Producto;
-  $json2[]=$Precio;
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +29,7 @@ while($row=$statement->fetch(PDO::FETCH_ASSOC)){
   <br>
   <h1 class="text-center font-weight-bold text-info">Productos con más ventas en este día</h1>
   <br>
-  <canvas id="myChart" width="400" height="150"></canvas>
+  <canvas id="myChart" width="400" height="120"></canvas>
  <br>
  <br>
  <br>
@@ -182,49 +154,7 @@ while($row=$statement->fetch(PDO::FETCH_ASSOC)){
 
 </footer>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="js/graficaBarras.js"></script>
 
-  <script>
-     
-    //  function actualizar(){location.reload(true);}
-    //  setInterval("actualizar()",1000);
-     var ctx = document.getElementById('myChart').getContext('2d');
-     var chart = new Chart(ctx, {
-    type: 'bar',
-
-    data: {
-        labels: <?php echo json_encode($json)?>,
-        datasets: [{
-            label: 'Precio de los productos más vendidos',
-            backgroundColor: ['rgb(97, 11, 75)',
-                'rgb(254, 46, 100)',
-                'rgb(46, 100, 254)',
-                'rgb(8, 138, 75)',
-                'rgb(4, 180, 174)',
-                'rgb(28, 28, 28)',
-                'rgb(11, 76, 95)',
-                'rgb(138, 41, 8)'],
-            borderColor: ['rgb(97, 11, 75)',
-                'rgb(254, 46, 100)',
-                'rgb(46, 100, 254)',
-                'rgb(8, 138, 75)',
-                'rgb(4, 180, 174)',
-                'rgb(28, 28, 28)',
-                'rgb(11, 76, 95)',
-                'rgb(138, 41, 8)'],
-            data: <?php echo json_encode($json2)?>
-        }]
-    },
-    options: {
-        layout: {
-            padding: {
-                left: 50,
-                right: 0,
-                top: 0,
-                bottom: 0
-            }
-        }
-    }
-});
-  </script>
 </body>
 </html>

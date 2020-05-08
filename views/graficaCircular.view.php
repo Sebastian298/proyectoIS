@@ -1,28 +1,3 @@
-<?php
-$host='localhost';
-$dbname='laredohits';
-$user='root';
-$pass='';
-
-try{
-    $dbcon= new PDO("mysql:host={$host};dbname={$dbname}",$user,$pass);
-    $dbcon->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-}catch(PDOException $ex){
-   die($ex->getMessage());
-}
-
-$statement = $dbcon->prepare("SELECT Nombre_Producto , sum(Precio) AS Total From venta WHERE MONTH(fecha) = MONTH(NOW()) Group by Nombre_Producto");
-$statement->execute();
-$json=[];
-$json2=[];
-
-while($row=$statement->fetch(PDO::FETCH_ASSOC)){
-  extract($row);
-  $json[]=$Nombre_Producto;
-  $json2[]=$Total;
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,53 +32,7 @@ while($row=$statement->fetch(PDO::FETCH_ASSOC)){
  <canvas id="myChart" width="400" height="150"></canvas>
 
  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
- <script>
-  //  function actualizar(){location.reload(true);}
-
-  // setInterval("actualizar()",1000);
-  var ctx = document.getElementById('myChart').getContext('2d');
-  var myChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: <?php echo json_encode($json)?>,
-        datasets: [{
-            label: '# of Votes',
-            data: <?php echo json_encode($json2)?>,
-            backgroundColor: [
-                'rgb(97, 11, 75)',
-                'rgb(254, 46, 100)',
-                'rgb(46, 100, 254)',
-                'rgb(8, 138, 75)',
-                'rgb(4, 180, 174)',
-                'rgb(28, 28, 28)',
-                'rgb(11, 76, 95)',
-                'rgb(138, 41, 8)'
-                
-            ],
-            borderColor: [
-                'rgb(97, 11, 75)',
-                'rgb(254, 46, 100)',
-                'rgb(46, 100, 254)',
-                'rgb(8, 138, 75)',
-                'rgb(4, 180, 174)',
-                'rgb(28, 28, 28)',
-                'rgb(11, 76, 95)',
-                'rgb(138, 41, 8)'
-            ],
-            borderWidth: 2
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-  });
- </script> 
+ <script src="js/graficaCircular.js"></script>
  <br>
  <br>
  <br>
