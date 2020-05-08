@@ -1,7 +1,7 @@
-var editar = document.getElementById('botn'),
+let editar = document.getElementById('botn'),
 tabla = document.getElementById('tabla');
 
-var nombre,apellidos,password;
+let nombre,apellidos,password;
 
 document.getElementById('ID').style.display = 'none';
 document.getElementById('boton').style.display='none';
@@ -11,11 +11,11 @@ cargarUsuarios();
 function cargarUsuarios(){
 	tabla.innerHTML = '<tr><th>Id</th><th>Nombre</th><th>Apellidos</th><th>Password</th><th>Eliminar</th><th>Editar</th></tr>';
 
-	var peticion = new XMLHttpRequest();
+	let peticion = new XMLHttpRequest();
 	peticion.open('GET', 'leer-datos.php');
 
 	peticion.onload = function(){
-		var datos = JSON.parse(peticion.responseText);
+		let datos = JSON.parse(peticion.responseText);
 		tabla.innerHTML='';
 		if(datos.error){
 			error_box.classList.add('active');
@@ -100,9 +100,9 @@ function formulario_valido(){
 
 
 function Eliminar(id){
-	var peticion = new XMLHttpRequest();
+	let peticion = new XMLHttpRequest();
 	peticion.open('POST', 'eliminarEmpleado.php');
-	var parametros = 'id='+ id;
+	let parametros = 'id='+ id;
 	peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	
 	peticion.onreadystatechange = function(){
@@ -200,13 +200,13 @@ function validarEditar(){
 }
 
 function Editar(){
-	var ident = formulario.id.value;
-	var Nombre = formulario.nombre.value;
-	var Apellidos = formulario.apellidos.value;
-	var pass = formulario.password.value; 
-	var peticion = new XMLHttpRequest();
+	let ident = formulario.id.value;
+	let Nombre = formulario.nombre.value;
+	let Apellidos = formulario.apellidos.value;
+	let pass = formulario.password.value; 
+	let peticion = new XMLHttpRequest();
 	peticion.open('POST', 'updateEmpleado.php');
-	var parametros = 'id='+ ident+'&nombre='+ Nombre+'&apellidos='+ Apellidos+'&password='+ pass;
+	let parametros = 'id='+ ident+'&nombre='+ Nombre+'&apellidos='+ Apellidos+'&password='+ pass;
 	peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	peticion.onreadystatechange = ()=>{
 		if(peticion.readyState == 4 && peticion.status == 200){

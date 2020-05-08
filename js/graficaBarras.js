@@ -1,12 +1,12 @@
-var nombres = [];
-var precios = [];
+let nombres = [];
+let precios = [];
 let contador =0;
   function Peticion(){
-    var peticion = new XMLHttpRequest();
+    let peticion = new XMLHttpRequest();
     peticion.open('GET', 'consultarBarras.php');
     peticion.onload = function(){
     
-    var datos = JSON.parse(peticion.responseText);
+    let datos = JSON.parse(peticion.responseText);
     
     
       if(contador!=0){
@@ -23,8 +23,8 @@ let contador =0;
    peticion.send();
    console.log(nombres);
    console.log(precios);
-   var ctx = document.getElementById('myChart').getContext('2d');
-     var chart = new Chart(ctx, {
+   let ctx = document.getElementById('myChart').getContext('2d');
+     let chart = new Chart(ctx, {
      type: 'bar',
 
      data: {

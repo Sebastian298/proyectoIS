@@ -1,12 +1,8 @@
-console.log('conectado');
-
-
-
 
 function registrarProducto(nombre,precio,id){
-  var peticion = new XMLHttpRequest();
+  let peticion = new XMLHttpRequest();
   peticion.open('POST','ventaProducto.php');
-  var parametros = 'nombreProducto='+ nombre+'&precio='+precio+'&id='+id;
+  let parametros = 'nombreProducto='+ nombre+'&precio='+precio+'&id='+id;
   peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
   peticion.onreadystatechange = ()=>{
@@ -26,11 +22,11 @@ function registrarProducto(nombre,precio,id){
 function mostrarVentas(){
 	tabla.innerHTML = '<tr><th>Id Producto</th><th>Precio</th><th>Fecha de Venta</th></tr>';
 
-	var peticion = new XMLHttpRequest();
+	let peticion = new XMLHttpRequest();
 	peticion.open('GET', 'leerVentas.php');
 
 	peticion.onload = function(){
-		var datos = JSON.parse(peticion.responseText);
+		let datos = JSON.parse(peticion.responseText);
 		tabla.innerHTML='';
 		if(datos.error){
 			error_box.classList.add('active');

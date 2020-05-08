@@ -1,7 +1,7 @@
 function mostrarMes(){
 	tabla.innerHTML = '<tr><th>Id Producto</th><th>Precio</th><th>Fecha de Venta</th></tr>';
 
-	var peticion = new XMLHttpRequest();
+	let peticion = new XMLHttpRequest();
 	peticion.open('GET', 'ventaMes.php');
 
 	peticion.onload = function(){

@@ -1,7 +1,7 @@
-var btn_cargar = document.getElementById('btn_cargar_usuarios'),
+let btn_cargar = document.getElementById('btn_cargar_usuarios'),
     editar = document.getElementById('botn'),
 	tabla = document.getElementById('tabla');
-var nombre,descripcion,imagen,precio;
+let nombre,descripcion,imagen,precio;
 
 cargarProductos();
 
@@ -49,7 +49,7 @@ function cargarProductos(){
 }
 
 function agregarProducto(){
-	var peticion = new XMLHttpRequest();
+	let peticion = new XMLHttpRequest();
 	nombre = document.getElementById('Nombre').value;
 	descripcion = document.getElementById('Descripcion').value;
 	precio = document.getElementById('Precio').value;
@@ -213,21 +213,21 @@ function validarEditar(){
 }
 
 function llenar(){
-	var ident = formulario.ID.value;
-	var nombre = formulario.Nombre.value;
-	var bandera = document.getElementById('imagen').value;
-	var imagen;
-	var descripcion = formulario.Descripcion.value;
-	var precio = formulario.Precio.value;
+	let ident = formulario.ID.value;
+	let nombre = formulario.Nombre.value;
+	let bandera = document.getElementById('imagen').value;
+	let imagen;
+	let descripcion = formulario.Descripcion.value;
+	let precio = formulario.Precio.value;
 	if(bandera==''){
 		imagen = document.getElementById('Imagen').value;
 	}else{
 		document.getElementById('Imagen').value=document.getElementById("imagen").files[0].name;
 		imagen= document.getElementById('Imagen').value;
 	}
-	var peticion = new XMLHttpRequest();
+	let peticion = new XMLHttpRequest();
 	peticion.open('POST', 'updateProducto.php');
-	var parametros = 'id='+ ident+'&nombre='+ nombre+'&descripcion='+ descripcion+'&precio='+ precio+'&imagen='+ imagen;
+	let parametros = 'id='+ ident+'&nombre='+ nombre+'&descripcion='+ descripcion+'&precio='+ precio+'&imagen='+ imagen;
 	peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	peticion.onreadystatechange = ()=>{
 		if(peticion.readyState == 4 && peticion.status == 200){
