@@ -24,7 +24,8 @@ function validarDatos($nombre, $apellidos, $pass){
 }
 
 if(validarDatos($nombre, $apellidos, $pass)){
-	$conexion = new mysqli('localhost', 'root', '', 'laredohits');
+	include 'db_data.php';
+	$conexion = new mysqli($db_dom, $db_user, $db_pass, $db_name);
 	$conexion->set_charset('utf8');
 
 	if($conexion->connect_errno){

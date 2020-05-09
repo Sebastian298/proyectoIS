@@ -2,8 +2,8 @@
 
 error_reporting(0);
 header('Content-type: application/json; charset=utf-8');
-
-$conexion = new mysqli('localhost', 'root', '', 'laredohits');
+include 'db_data.php';
+$conexion = new mysqli($db_dom, $db_user, $db_pass, $db_name);
 
 if($conexion->connect_errno){
 	$respuesta = [

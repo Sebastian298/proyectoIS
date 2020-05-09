@@ -13,8 +13,9 @@ $descripcion = $_POST['descripcion'];
 $precio = $_POST['precio'];
 $imagen = $_POST['imagen'];
 
-	$conexion = new mysqli('localhost', 'root', '');
-	$db = mysqli_select_db($conexion,'laredohits');
+    include 'db_data.php';
+	$conexion = new mysqli($db_dom, $db_user, $db_pass);
+	$db = mysqli_select_db($conexion,$db_name);
 	$conexion->set_charset('utf8');
 
 	if(!$conexion){

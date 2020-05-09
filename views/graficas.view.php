@@ -1,8 +1,9 @@
 <?php
+include 'db_data.php';
 $host='localhost';
-$dbname='laredohits';
-$user='root';
-$pass='';
+$dbname=$db_name;
+$user=$db_user;
+$pass=$db_pass;
 
 try{
     $dbcon= new PDO("mysql:host={$host};dbname={$dbname}",$user,$pass);
@@ -42,6 +43,7 @@ while($row=$stat->fetch(PDO::FETCH_ASSOC)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estadisticas</title>
     <script src="https://kit.fontawesome.com/8b850b0e85.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="img/index.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>

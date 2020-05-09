@@ -10,7 +10,7 @@ $sentencia->execute();
 
 $resultado = $sentencia->fetchAll();
 
-$productosPagina = 3;
+$productosPagina = 12;
 
 $totalProductos=$sentencia->rowCount();
 
@@ -27,6 +27,7 @@ $paginas=ceil($paginas);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contenido</title>
     <script src="https://kit.fontawesome.com/8b850b0e85.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="img/index.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="css/estilosBootstrap.css"> -->
     
@@ -56,23 +57,31 @@ $paginas=ceil($paginas);
 <h1 class="text-center font-weight-bold text-primary">Registrar Venta</h1>
 
 <?php
-if(!$_GET){
-  header('Location:contenido.php?pagina=1');
-}
+ 
+ 
+ 
+  $_GET['pagina']=1;
+ 
+  $iniciar = ($_GET['pagina']-1)*($productosPagina);
 
-if($_GET['pagina']>$paginas||$_GET['pagina']<=0){
+  $sqlProductos = 'SELECT * FROM producto LIMIT :iniciar,:narticulos';
+  $sentenciaProductos=$pdo->prepare($sqlProductos);
+  $sentenciaProductos->bindParam(':iniciar', $iniciar,PDO::PARAM_INT);
+  $sentenciaProductos->bindParam(':narticulos',$productosPagina,PDO::PARAM_INT);
+  $sentenciaProductos->execute();
+  $resultadoProductos=$sentenciaProductos->fetchAll();
 
-  header('Location:contenido.php?pagina=1');
-}
+ 
+ 
+ 
+//  if($_GET['pagina']>$paginas||$_GET['pagina']<=0){
 
-$iniciar = ($_GET['pagina']-1)*$productosPagina;
-
-$sqlProductos = 'SELECT * FROM producto LIMIT :iniciar,:narticulos';
-$sentenciaProductos=$pdo->prepare($sqlProductos);
-$sentenciaProductos->bindParam(':iniciar', $iniciar,PDO::PARAM_INT);
-$sentenciaProductos->bindParam(':narticulos',$productosPagina,PDO::PARAM_INT);
-$sentenciaProductos->execute();
-$resultadoProductos=$sentenciaProductos->fetchAll();
+//   header('Location:contenido.php?pagina=1');
+//  }
+  
+ 
+ 
+ 
 ?>
 <br>
 <br>
@@ -93,7 +102,10 @@ $resultadoProductos=$sentenciaProductos->fetchAll();
                     <p class="card-text font-weight-bold text-info">Precio$: <?php echo $producto['precio']?></p>
                     <button class="btn btn-warning btn-lg active" onclick="registrarProducto('<?php echo ($producto['nombre'])?>','<?php  echo($producto['precio'])?>','<?php echo($producto['id'])?>')">Registrar</button>
                 </div>
+                
             </div>
+            <br>
+            <br>
             <?php endforeach?>
           </div>
     </div>
@@ -104,7 +116,7 @@ $resultadoProductos=$sentenciaProductos->fetchAll();
 <br>
 </div>
 
-<div class="container">
+<!-- <div class="container">
   <nav aria-label="...">
   <ul class="pagination pagination-lg  justify-content-center">
     <li class="page-item
@@ -125,7 +137,7 @@ $resultadoProductos=$sentenciaProductos->fetchAll();
     </li>
   </ul>
 </nav>
-</div>
+</div> -->
 
 
 <br>

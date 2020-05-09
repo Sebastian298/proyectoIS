@@ -10,7 +10,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
    $password = $_POST['Password'];
    $errores='';   
    try {
-    $conexion= new PDO('mysql:host=127.0.0.1;dbname=laredohits','root','');
+    include 'db_data.php';
+    $conexion= new PDO("mysql:host={$db_dom};dbname={$db_name}",$db_user,$db_pass);
    } catch (PDOException $e) {
        echo "Error:".$e->getMessage();
    }

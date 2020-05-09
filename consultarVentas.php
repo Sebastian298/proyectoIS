@@ -1,7 +1,7 @@
 <?php session_start();
 
 if(isset($_SESSION['usuario'])){
-  require 'views/consultarVentas.view.php';
+  include('views/ConsultarVentas.view.php');
 }else{
     header('Location: inicioSesion.php');
 }

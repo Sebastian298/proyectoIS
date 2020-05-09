@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administración</title>
     <script src="https://kit.fontawesome.com/8b850b0e85.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="img/index.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
@@ -30,7 +31,7 @@
 <div class="d-flex" id="wrapper">
 
 <!-- Sidebar -->
-<div class="bg-light border-right" id="sidebar-wrapper">
+<div class="bg-light border-right" id="sidebar-wrapper" style="width: 250px">
   <div class="list-group list-group-flush">
     <a href="contenido.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-primary"><h2><i class="fas fa-cash-register"></i><br>Registrar Venta</h2></a>
     <a href="registroEmpleado.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-success"><h2><i class="fas fa-user-edit"></i><br>Registrar Empleado</h2></a>
@@ -67,60 +68,74 @@
     </div>
   <br>
   <br>
-  <div class="container-fluid">
-  <div class="card-deck">
-  <div class="card text-center font-weight-bold text-white bg-info mb-3">
-    <img class="img-fluid" src="img/imgAdm1.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+  <div class="container" id="padre">
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+        <div class="card text-warning bg-info mb-3" style="max-width: 300px" id="ventasDia">
+           <div class="card-header text-center text-warning font-weight-bold"><h3>Ventas del día</h3></div>
+           <div class="card-body"><h1><i class="fas fa-hand-holding-usd"></i></h1>
+             <h5 id="cantidad" class="card-tittle text-warning"></h5>
+             <p class="card-text"></p>
+           </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <div class="card text-warning bg-primary mb-3" style="max-width: 320px" id="totalVentas">
+           <div class="card-header text-warning text-center font-weight-bold"><h3>Ganancias del día</h3></div>
+           <div class="card-body"><h1><i class="fas fa-coins"></i></h1>
+             <h5  id="ganancias" class="card-tittle text-warning"></h5>
+             <p class="card-text"></p>
+           </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <div class="card text-warning bg-danger mb-3" style="max-width: 320px" id="existencia">
+           <div class="card-header text-center text-warning font-weight-bold"><h3>Productos Disponibles</h3></div>
+           <div class="card-body"><h1><i class="fas fa-laptop-house"></i></h1>
+             <h5 class="card-tittle text-warning"></h5>
+             <p class="card-text"></p>
+           </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="card text-center font-weight-bold text-white bg-primary mb-3">
-    <img class="img-fluid" src="img/imgAdm2.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-  </div>
-  <div class="card text-center font-weight-bold text-white bg-danger mb-3">
-    <img class="img-fluid" src="img/imgAdm3.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-  </div>
-</div>
-<br>
-<br>
-<div class="card-deck">
-  <div class="card text-center font-weight-bold text-white bg-info mb-3">
-    <img class="img-fluid" src="img/imgAdm4.webp" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-  </div>
-  <div class="card text-center font-weight-bold text-red bg-warning mb-3">
-    <img class="img-fluid" src="img/imgAdm4.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-  </div>
-  <div class="card text-center font-weight-bold text-white bg-success mb-3">
-    <img class="img-fluid" src="img/imgAdm5.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-  </div>
-</div>
-  </div>
-  <!-- /#page-content-wrapper -->
 
   <br>
-  <footer class="page-footer font-small blue-grey lighten-5">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+<footer class="page-footer font-small blue-grey lighten-5">
 
   <div style="background-color: #21d192;">
     <div class="container">
@@ -238,5 +253,7 @@
   <!-- Copyright -->
 
 </footer>
+
+<script src="js/ventasAdm.js"></script>
 </body>
 </html>
