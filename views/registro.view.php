@@ -44,7 +44,7 @@
 				<input type="text" name="nombre" id="nombre" placeholder="Nombre">
 				<input type="text" name="apellidos" id="Apellidos" placeholder="Apellidos">
 				<input type="password" name="password" id="Password" placeholder="Password">
-				<button id="btn" type="button" class="btn btn-success" onclick="agregarUsuarios()"class="btn">Agregar</button>
+				<button id="btn" type="button" class="btn btn-success" onclick="validarDuplicados()"class="btn">Agregar</button>
 			</form>
 			
 			<button id="boton"onclick="validarEditar()" class="btn btn-warning" id="botn">Editar</button>

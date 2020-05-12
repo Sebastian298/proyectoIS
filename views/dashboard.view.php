@@ -31,13 +31,13 @@
 <div class="d-flex" id="wrapper">
 
 <!-- Sidebar -->
-<div class="bg-light border-right" id="sidebar-wrapper" style="width: 250px">
-  <div class="list-group list-group-flush">
-    <a href="contenido.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-primary"><h2><i class="fas fa-cash-register"></i><br>Registrar Venta</h2></a>
-    <a href="registroEmpleado.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-success"><h2><i class="fas fa-user-edit"></i><br>Registrar Empleado</h2></a>
-    <a href="registrarProducto.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-danger"><h2><i class="fas fa-tv"></i><br>Registrar Producto</h2></a>
-    <a href="ConsultarVentas.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-info"><h2><i class="fas fa-file-invoice-dollar"></i><br>Consultar Ventas</h2></a>
-    <a href="graficas.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-danger"><h2><i class="fas fa-chart-line"></i><br>Estadísticas de Ventas</h2></a>
+<div class="bg-light border-right" id="sidebar-wrapper" style="width: 150px; height: 150px;">
+<div class="list-group list-group-flush">
+    <a href="contenido.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-primary"><h4><i class="fas fa-cash-register"></i><br>Registrar Venta</h4></a>
+    <a href="registroEmpleado.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-success"><h4><i class="fas fa-user-edit"></i><br>Registrar Empleado</h4></a>
+    <a href="registrarProducto.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-danger"><h4><i class="fas fa-tv"></i><br>Registrar Producto</h4></a>
+    <a href="ConsultarVentas.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-info"><h4><i class="fas fa-file-invoice-dollar"></i><br>Consultar Ventas</h4></a>
+    <a href="graficas.php" class="list-group-item list-group-item-action bg-light text-center font-weight-bold text-danger"><h4><i class="fas fa-chart-line"></i><br>Estadísticas de Ventas</h4></a>
   </div>
 </div>
 <!-- /#sidebar-wrapper -->
@@ -69,8 +69,8 @@
   <br>
   <br>
   <div class="container" id="padre">
-    <div class="row">
-      <div class="col-sm-12 col-md-4">
+    <div class="row ">
+      <div class="col-sm-6 col-md-4">
         <div class="card text-warning bg-info mb-3" style="max-width: 300px" id="ventasDia">
            <div class="card-header text-center text-warning font-weight-bold"><h3>Ventas del día</h3></div>
            <div class="card-body"><h1><i class="fas fa-hand-holding-usd"></i></h1>
@@ -79,7 +79,7 @@
            </div>
         </div>
       </div>
-      <div class="col-sm-12 col-md-4">
+      <div class="col-sm-6 col-md-4">
         <div class="card text-warning bg-primary mb-3" style="max-width: 320px" id="totalVentas">
            <div class="card-header text-warning text-center font-weight-bold"><h3>Ganancias del día</h3></div>
            <div class="card-body"><h1><i class="fas fa-coins"></i></h1>
@@ -88,10 +88,21 @@
            </div>
         </div>
       </div>
-      <div class="col-sm-12 col-md-4">
+      <div class="col-sm-6 col-md-4">
         <div class="card text-warning bg-danger mb-3" style="max-width: 320px" id="existencia">
-           <div class="card-header text-center text-warning font-weight-bold"><h3>Productos Disponibles</h3></div>
-           <div class="card-body"><h1><i class="fas fa-laptop-house"></i></h1>
+           <div class="card-header text-center text-warning font-weight-bold"><h4>Productos Disponibles</h4></div>
+           <div class="card-body"><h1><i class="fas fa-laptop-house"></i></h1> <h5 class="card-tittle text-warning"></h5>
+             <p class="card-text"></p>
+           </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="row">
+      <div class="col-sm-6 col-md-4 align-self-center">
+      <div class="card text-warning bg-primary mb-3" style="max-width: 320px">
+           <div class="card-header text-center text-warning font-weight-bold"><h3>Administradores</h3></div>
+           <div class="card-body"><h1><i class="fas fa-user-tie"></i>    2</h1>
              <h5 class="card-tittle text-warning"></h5>
              <p class="card-text"></p>
            </div>
@@ -189,7 +200,7 @@
     <div class="row mt-3 dark-grey-text">
 
       <!-- Grid column -->
-      <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+      <div class="col-md-12 col-lg-4 col-xl-3 col-sm-12">
 
         <!-- Content -->
         <h6 class="text-uppercase font-weight-bold">Company name</h6>
@@ -202,7 +213,7 @@
       <!-- Grid column -->
 
       <!-- Grid column -->
-      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+      <div class="col-md-12 col-lg-2 col-xl-3 col-sm-12">
 
         <!-- Links -->
         <h6 class="text-uppercase font-weight-bold">Products</h6>
@@ -215,7 +226,7 @@
       <!-- Grid column -->
 
       <!-- Grid column -->
-      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+      <div class="col-md-12 col-lg-2 col-xl-3 col-sm-12">
 
         <!-- Links -->
         <h6 class="text-uppercase font-weight-bold">Useful links</h6>
@@ -228,7 +239,7 @@
       <!-- Grid column -->
 
       <!-- Grid column -->
-      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+      <div class="col-md-12 col-lg-2 col-xl-3 col-sm-12">
 
         <!-- Links -->
         <h6 class="text-uppercase font-weight-bold">Contact</h6>

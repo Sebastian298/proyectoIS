@@ -7,15 +7,15 @@ $mysqly;
 error_reporting(0);
 // header('Content-type: application/json; charset=utf-8');
 
-$nombre = $_POST['nombre'];
-$apellidos = $_POST['apellidos'];
-$pass = $_POST['password'];
+$nombre = filter_var(strtolower($_POST['nombre']),FILTER_SANITIZE_STRING);
+$apellidos = filter_var($_POST['apellidos'],FILTER_SANITIZE_STRING);
+$pass = filter_var($_POST['password'],FILTER_SANITIZE_STRING);
 
 
 function validarDatos($nombre, $apellidos, $pass){
-	if($nombre == '' || is_numeric($nombre)){
+	if($nombre == '' || is_numeric($nombre)||!(ctype_alpha($nombre))){
 		return false;
-	} elseif($apellidos=='' || is_numeric($apellidos)){
+	} elseif($apellidos=='' || is_numeric($apellidos)||!(ctype_alpha($apellidos))){
 		return false;
 	} elseif($pass == ''){
 		return false;

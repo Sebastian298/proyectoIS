@@ -6,8 +6,8 @@ if(isset($_SESSION['usuario'])){
 
 error_reporting(0);
 
-$nombre=$_POST['nombre'];
-$descripcion=$_POST['descripcion'];
+$nombre=filter_var($_POST['nombre'],FILTER_SANITIZE_STRING);
+$descripcion=filter_var($_POST['descripcion'],FILTER_SANITIZE_STRING);
 $precio = $_POST['precio'];
 $imagen = $_POST['imagen'];
 
