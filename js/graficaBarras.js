@@ -21,8 +21,6 @@ let contador =0;
         }
     }
    peticion.send();
-   console.log(nombres);
-   console.log(precios);
    let ctx = document.getElementById('myChart').getContext('2d');
      let chart = new Chart(ctx, {
      type: 'bar',

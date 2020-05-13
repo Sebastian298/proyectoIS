@@ -10,7 +10,7 @@ function ContarVentasDia(){
 	    datos = JSON.parse(peticion.responseText);
         
         for(var i = 0; i < datos.length; i++){
-		  ventasDia.innerHTML +=  ` 
+		  cantidad.innerHTML +=  ` 
           <h5 class="card-tittle">Cantidad: ${datos[i].Cuantos} ventas</h5>
           `
           
@@ -22,6 +22,28 @@ function ContarVentasDia(){
     
     peticion.send();
    
+}
+
+function ContarVentasAyer(){
+    let datos;
+    let peticion = new XMLHttpRequest();
+    peticion.open('GET', 'contarVentasAyer.php');
+
+    peticion.onload = function(){
+        
+        
+	    datos = JSON.parse(peticion.responseText);
+        
+        for(var i = 0; i < datos.length; i++){
+		  ayer.innerHTML +=  ` 
+          <h5 class="card-tittle">Cantidad: ${datos[i].Cuantos} ventas</h5>
+          `
+          
+        }
+                
+        
+    }
+     peticion.send();
 }
 
 function ObtenerGanancias(){ 
@@ -61,7 +83,7 @@ function ContarProductos(){
         
         for(var i = 0; i < datos.length; i++){
 		  existencia.innerHTML +=  ` 
-          <h5 class="card-tittle">Existencia : ${datos[i].Cuantos} Productos</h5>
+          <h5>Existencia : ${datos[i].Cuantos} Productos</h5>
           `
           
         }
@@ -73,6 +95,34 @@ function ContarProductos(){
     peticion.send();
 }
 
+function ContarEmpleados(){
+    let datos;
+    let peticion = new XMLHttpRequest();
+    peticion.open('GET', 'contarEmpleados.php');
+
+    peticion.onload = function(){
+        
+        
+	    datos = JSON.parse(peticion.responseText);
+        
+        for(var i = 0; i < datos.length; i++){
+		  empleados.innerHTML +=  ` 
+          <h4><p class="card-text">Registrados: ${datos[i].Cuantos}</p></h4>
+          `
+          
+        }
+                
+        
+    }
+    
+    
+    peticion.send();
+}
+
+
+
+ContarEmpleados();
 ContarVentasDia();
 ObtenerGanancias();
 ContarProductos();
+ContarVentasAyer();
