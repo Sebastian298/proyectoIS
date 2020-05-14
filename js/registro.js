@@ -6,7 +6,7 @@ document.getElementById("boton").style.display = "none";
 cargarUsuarios();
 function cargarUsuarios() {
   tabla.innerHTML =
-    "<tr><th>Id</th><th>Nombre</th><th>Apellidos</th><th>Password</th><th>Eliminar</th><th>Editar</th></tr>";
+    "<tr><th>Id</th><th>Nombre</th><th>Apellidos</th><th>Eliminar</th><th>Editar</th></tr>";
   let peticion = new XMLHttpRequest();
   peticion.open("GET", "leer-datos.php");
 
@@ -22,9 +22,8 @@ function cargarUsuarios() {
           <th>${datos[i].id}</th>
 		  <td>${datos[i].nombre}</td>
 		  <td>${datos[i].apellidos}</td>
-		  <td>${datos[i].password}</td>
 		  <td><button class="btn btn-danger" onclick="validarEliminacion('${datos[i].id}')">Eliminar</button></td>
-		  <td><button class="btn btn-warning" onclick="Cargar('${datos[i].id}','${datos[i].nombre}','${datos[i].apellidos}','${datos[i].password}')">Editar</button></td>
+		  <td><button class="btn btn-warning" onclick="Cargar('${datos[i].id}','${datos[i].nombre}','${datos[i].apellidos}')">Editar</button></td>
           </tr>
           `;
       }
@@ -49,9 +48,9 @@ function agregarUsuarios(nombre, apellidos, duplicado) {
       "Content-Type",
       "application/x-www-form-urlencoded"
     );
-
     peticion.onreadystatechange = () => {
       if (peticion.readyState == 4 && peticion.status == 200) {
+        console.log(peticion.responseText);
         Swal.fire(
           "Excelente!",
           "Se a registrado un nuevo empleado!",
@@ -177,13 +176,13 @@ function validarEliminacion(id) {
     });
 }
 
-function Cargar(id, nombre, apellidos, password) {
+function Cargar(id, nombre, apellidos) {
   document.getElementById("boton").style.display = "block";
   document.getElementById("btn").style.display = "none";
+  formulario.password.style.display="none";
   formulario.id.value = id;
   formulario.nombre.value = nombre;
   formulario.apellidos.value = apellidos;
-  formulario.password.value = password;
 }
 
 function validarEditar() {
@@ -230,7 +229,6 @@ function Editar() {
   let ident = formulario.id.value;
   let Nombre = formulario.nombre.value;
   let Apellidos = formulario.apellidos.value;
-  let pass = formulario.password.value;
   let peticion = new XMLHttpRequest();
   peticion.open("POST", "updateEmpleado.php");
   let parametros =
@@ -239,9 +237,7 @@ function Editar() {
     "&nombre=" +
     Nombre +
     "&apellidos=" +
-    Apellidos +
-    "&password=" +
-    pass;
+    Apellidos;
   peticion.setRequestHeader(
     "Content-Type",
     "application/x-www-form-urlencoded"
@@ -254,6 +250,7 @@ function Editar() {
       formulario.password.value = "";
       document.getElementById("boton").style.display = "none";
       document.getElementById("btn").style.display = "block";
+      formulario.password.style.display="block";
     }
   };
 

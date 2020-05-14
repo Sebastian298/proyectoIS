@@ -62,7 +62,7 @@
     <tr>
       <th>Id Producto</th>
       <th>Precio</th>
-      <th>Fecha de Venta</th>
+      <th>Nombre Producto</th>
     </tr>
   </thead>
   <tbody id="tabla">

@@ -10,7 +10,6 @@ error_reporting(0);
 $id=$_POST['id'];
 $nombre = $_POST['nombre'];
 $apellidos = $_POST['apellidos'];
-$pass = $_POST['password'];
 
 	include 'db_data.php';
 	$conexion = new mysqli($db_dom, $db_user, $db_pass);
@@ -21,7 +20,7 @@ $pass = $_POST['password'];
 		$respuesta = ['error' => true];
 	} else {
 		if($db){
-			$query = "UPDATE empleado SET nombre='$nombre',apellidos='$apellidos',password='$pass' WHERE ID='$id'";
+			$query = "UPDATE empleado SET nombre='$nombre',apellidos='$apellidos' WHERE ID='$id'";
 			$ejec = mysqli_query($conexion,$query);
 			if($ejec){
 				$respuesta = [];

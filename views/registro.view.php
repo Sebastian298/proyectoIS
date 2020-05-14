@@ -62,7 +62,6 @@
             <th>Id</th>
             <th>Nombre</th>
             <th>Apellidos</th>
-            <th>Password</th>
             <th>Eliminar</th>
             <th>Editar</th>
           </tr>

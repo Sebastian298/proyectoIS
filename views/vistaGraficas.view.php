@@ -30,9 +30,9 @@
   <br>
   <h1 class="text-center font-weight-bold text-info">Vista Estadística de las ventas</h1>
   
-  <div class="container my-5" style="background: black; width: 940px; padding: 25px;">
+<div class="container my-5" style="background: black;padding: 25px;">
         <div class="row">
-            <div class="col-md-4 col-sm-4">
+            <div class="col-sm-12 col-md-4">
                  <div class="card text-white bg-dark text-center" style="width: 18rem;">
                      <img src="img/graficaLineas.png" style="height: 150px;" class="card-img-top" alt="Gráfica">
                        <div class="card-body">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
             </div>
-            <div class="col-md-4 col-sm-4">
+            <div class="col-sm-12 col-md-4">
                  <div class="card text-white bg-dark text-center" style="width: 18rem;">
                      <img src="img/graficaBarras.webp" style="height: 150px;" class="card-img-top" alt="Gráfica">
                        <div class="card-body">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
             </div>
-            <div class="col-md-4 col-sm-4">
+            <div class="col-sm-12 col-md-4">
                  <div class="card text-white bg-dark text-center" style="width: 18rem;">
                      <img src="img/graficaPastel.png" style="height: 150px;" class="card-img-top" alt="Gráfica">
                        <div class="card-body">

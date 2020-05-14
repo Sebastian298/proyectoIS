@@ -26,7 +26,7 @@ function realizar() {
 		$usuario = [
 			'IdProducto' => $fila['idProducto'],
 			'Precio' 	=> $fila['Precio'],
-			'fecha' => fecha($fila['fecha']),
+			'Nombre_Producto' => fecha($fila['fecha']),
 		];
 		array_push($respuesta, $usuario);
 	}

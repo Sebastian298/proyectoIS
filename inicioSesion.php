@@ -15,7 +15,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
    } catch (PDOException $e) {
        echo "Error:".$e->getMessage();
    }
-
+   
+   $password=hash('sha512',$password);
    $statement = $conexion->prepare
    ('SELECT * FROM empleado WHERE nombre = :nombre AND password = :pass');
 

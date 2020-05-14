@@ -9,6 +9,8 @@ error_reporting(0);
 $id = $_POST['id'];
 $nombreProducto=$_POST['nombreProducto'];
 $precio = $_POST['precio'];
+$fecha=getdate();
+
 
 
     include 'db_data.php';
@@ -25,6 +27,7 @@ $precio = $_POST['precio'];
 			if($ejec){
 				$respuesta = [];
 				echo 'Insertado';
+				echo('<h1>'.$fecha."</h1>");
 			} else{
 				echo 'Error';	
 				$respuesta = ['error' =>true];

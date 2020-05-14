@@ -11,17 +11,17 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-        <div class="container">
-        <h1><i class="fas fa-user-tie text-center font-weight-bold text-info"><br>Administrador</h1></i>
+        <div class="container-fluid">
+        <h2><i class="fas fa-user-tie text-center font-weight-bold text-light"><br>Administrador</h2></i>
           <a href="cerrar.php" class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" href="cerrar.php"></span>
                 Cerrar Sesión</a>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <h1><a class="nav-link font-weight-bold text-danger" href="cerrar.php">Cerrar Sesión
+                <h3><a class="nav-link font-weight-bold text-danger" href="cerrar.php">Cerrar Sesión
                       <span class="sr-only">(current)</span>
-                    </a></h1>
+                    </a></h3>
               </li>
             </ul>
           </div>
@@ -33,13 +33,13 @@
 <!-- Sidebar -->
 <div class="border-right" id="sidebar-wrapper" style="width: 170px;">
 <div class="list-group list-group-flush">
-    <a href="contenido.php" class="list-group-item list-group-item-action bg-dark text-center font-weight-bold text-info"><h4><i class="fas fa-cash-register"></i><br>Registrar Venta</h4></a>
-    <a href="registroEmpleado.php" class="list-group-item list-group-item-action bg-dark text-center font-weight-bold text-info"><h4><i class="fas fa-user-edit"></i><br>Registrar Empleado</h4></a>
-    <a href="registrarProducto.php" class="list-group-item list-group-item-action bg-dark text-center font-weight-bold text-info"><h4><i class="fas fa-tv"></i><br>Registrar Producto</h4></a>
-    <a href="ConsultarVentas.php" class="list-group-item list-group-item-action bg-dark text-center font-weight-bold text-info"><h4><i class="fas fa-file-invoice-dollar"></i><br>Consultar Ventas</h4></a>
-    <a href="graficas.php" class="list-group-item list-group-item-action bg-dark text-center font-weight-bold text-info"><h4><i class="fas fa-chart-line"></i><br>Estadísticas de Ventas</h4></a>
-    <a href="portafolio.php" class="list-group-item list-group-item-action bg-dark text-center font-weight-bold text-info"><h4><i class="fas fa-user-shield"></i><br>Contacto con Desarrollador</h4></a>
-    <a href="cerrar.php" class="list-group-item list-group-item-action bg-dark text-center font-weight-bold text-info"><h4><i class="fas fa-user-times"></i><br>Cerrar Sesión</h4></a>
+    <a href="contenido.php" class="list-group-item list-group-item-action bg-dark text-center font-weight-bold text-warning"><h4><i class="fas fa-cash-register"></i><br>Registrar Venta</h4></a>
+    <a href="registroEmpleado.php" class="list-group-item list-group-item-action bg-dark text-center font-weight-bold text-warning"><h4><i class="fas fa-user-edit"></i><br>Registrar Empleado</h4></a>
+    <a href="registrarProducto.php" class="list-group-item list-group-item-action bg-dark text-center font-weight-bold text-warning"><h4><i class="fas fa-tv"></i><br>Registrar Producto</h4></a>
+    <a href="ConsultarVentas.php" class="list-group-item list-group-item-action bg-dark text-center font-weight-bold text-warning"><h4><i class="fas fa-file-invoice-dollar"></i><br>Consultar Ventas</h4></a>
+    <a href="graficas.php" class="list-group-item list-group-item-action bg-dark text-center font-weight-bold text-warning"><h4><i class="fas fa-chart-line"></i><br>Estadísticas de Ventas</h4></a>
+    <a href="portafolio.php" class="list-group-item list-group-item-action bg-dark text-center font-weight-bold text-light"><h4><i class="fas fa-user-shield"></i><br>Contacto con Desarrollador</h4></a>
+    <a href="cerrar.php" class="list-group-item list-group-item-action bg-dark text-center font-weight-bold text-danger"><h4><i class="fas fa-user-times"></i><br>Cerrar Sesión</h4></a>
   </div>
 </div>
 <!-- /#sidebar-wrapper -->
@@ -72,8 +72,8 @@
   <br>
   <div class="container" id="padre">
     <div class="row ">
-      <div class="col-sm-6 col-md-4">
-        <div class="card text-warning bg-danger mb-3" style="max-width: 300px">
+      <div class="col-sm-12 col-md-4">
+        <div class="card text-warning bg-dark mb-3" style="max-width: 300px">
            <div class="card-header text-center text-warning font-weight-bold"><h3>Ventas del día</h3></div>
            <div class="card-body"><h1><i class="fas fa-hand-holding-usd"></i></h1>
              <h5 id="cantidad" class="card-tittle text-warning"></h5>
@@ -81,7 +81,7 @@
            </div>
         </div>
       </div>
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-12 col-md-4">
         <div class="card text-warning bg-primary mb-3" style="max-width: 320px" id="totalVentas">
            <div class="card-header text-warning text-center font-weight-bold"><h3>Ganancias del día</h3></div>
            <div class="card-body"><h1><i class="fas fa-coins"></i></h1>
@@ -90,16 +90,16 @@
            </div>
         </div>
       </div>
-      <div class="col-sm-6 col-md-4">
-        <div class="card text-warning bg-info mb-3" style="max-width: 320px">
-           <div class="card-header text-center text-warning font-weight-bold"><h4>Ventas de Ayer</h4></div>
+      <div class="col-sm-12 col-md-4">
+        <div class="card text-light bg-info mb-3" style="max-width: 320px">
+           <div class="card-header text-center text-light font-weight-bold"><h4>Ventas de Ayer</h4></div>
            <div class="card-body"><h1><i class="fas fa-user-alt"></i></h1>
-           <h5 id="ayer" class="card-tittle text-warning"></h5>
+           <h5 id="ayer" class="card-tittle text-light"></h5>
            <p class="card-text"></p>
            </div>
         </div>
       </div>
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-12 col-md-4">
       <div class="card text-warning bg-primary mb-3" style="max-width: 300px;height:200px;">
            <div class="card-header text-center text-warning font-weight-bold"><h4>Administradores</h4></div>
            <div class="card-body"><h1><i class="fas fa-user-tie"></i>    2</h1>
@@ -108,17 +108,17 @@
            </div>
         </div>
       </div>
-      <div class="col-sm-6 col-md-4">
-        <div class="card text-warning bg-info mb-3" style="max-width: 320px">
-           <div class="card-header text-center text-warning font-weight-bold"><h4>Empleados</h4></div>
+      <div class="col-sm-12 col-md-4">
+        <div class="card text-light bg-info mb-3" style="max-width: 320px">
+           <div class="card-header text-center text-light font-weight-bold"><h4>Empleados</h4></div>
            <div class="card-body"><h1><i class="fas fa-user-alt"></i></h1>
-           <h5 id="empleados" class="card-tittle text-warning"></h5>
+           <h5 id="empleados" class="card-tittle text-light"></h5>
            <p class="card-text"></p>
            </div>
         </div>
       </div>
-      <div class="col-sm-6 col-md-4">
-        <div class="card text-warning bg-danger mb-3" style="max-width: 320px">
+      <div class="col-sm-12 col-md-4">
+        <div class="card text-warning bg-dark mb-3" style="max-width: 320px">
            <div class="card-header text-center text-warning font-weight-bold"><h4>Productos Disponibles</h4></div>
            <div class="card-body"><h1><i class="fas fa-laptop-house"></i></h1> 
            <h5  id="existencia" class="card-tittle text-warning"></h5>
@@ -128,7 +128,28 @@
       </div>
     </div>
   </div>
-
+  <div class="w-100"></div>
+  <br>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-11">
+      <h2 class="text-center font-weight-bold text-dark">Registro de las ventas del día</h2>
+      </div>
+      <div class="col-sm-12 col-md-10">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Id Producto</th>
+            <th>Precio</th>
+            <th>Nombre Producto</th>
+          </tr>
+        </thead>
+       <tbody id="tabla"></tbody>
+      </table>
+      </div>
+    </div>
+  </div>
   <br>
   <br>
   <br>
@@ -284,6 +305,5 @@
 </footer>
 
 <script src="js/ventasAdm.js"></script>
-<script src="js/graficaBarras.js"></script>
 </body>
 </html>

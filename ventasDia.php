@@ -11,7 +11,7 @@
 	];
   } else {
 	$conexion->set_charset("utf8");
-	$statement = $conexion->prepare("SELECT COUNT(*) AS Cuantos  FROM venta WHERE DATE(fecha) = CURRENT_DATE()");
+	$statement = $conexion->prepare("SELECT COUNT(*) AS Cuantos FROM venta WHERE DATE(fecha) = CURRENT_DATE() ");
 	$statement->execute();
 	$resultados = $statement->get_result();
 	

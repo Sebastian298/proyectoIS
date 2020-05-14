@@ -1,5 +1,5 @@
 function mostrarHoy(){
-	tabla.innerHTML = '<tr><th>Id Producto</th><th>Precio</th><th>Fecha de Venta</th></tr>';
+	tabla.innerHTML = '<tr><th>Id Producto</th><th>Precio</th><th>Nombre Producto</th></tr>';
 
 	let peticion = new XMLHttpRequest();
 	peticion.open('GET', 'ventas.php');
@@ -15,7 +15,7 @@ function mostrarHoy(){
           <tr>
           <th>${datos[i].IdProducto}</th>
           <td>$${datos[i].Precio}</td>
-          <td>${datos[i].fecha}</td>
+          <td>${datos[i].Nombre_Producto}</td>
           </tr>
           `
 		 }

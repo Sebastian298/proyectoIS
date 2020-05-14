@@ -7,23 +7,13 @@ $mysqly;
 error_reporting(0);
 // header('Content-type: application/json; charset=utf-8');
 
-$nombre = filter_var(strtolower($_POST['nombre']),FILTER_SANITIZE_STRING);
-$apellidos = filter_var($_POST['apellidos'],FILTER_SANITIZE_STRING);
+$nombre =$_POST['nombre'];
+$apellidos = $_POST['apellidos'];
 $pass = filter_var($_POST['password'],FILTER_SANITIZE_STRING);
 
 
-function validarDatos($nombre, $apellidos, $pass){
-	if($nombre == '' || is_numeric($nombre)||!(ctype_alpha($nombre))){
-		return false;
-	} elseif($apellidos=='' || is_numeric($apellidos)||!(ctype_alpha($apellidos))){
-		return false;
-	} elseif($pass == ''){
-		return false;
-	} 
-	return true;
-}
 
-if(validarDatos($nombre, $apellidos, $pass)){
+
 	include 'db_data.php';
 	$conexion = new mysqli($db_dom, $db_user, $db_pass, $db_name);
 	$conexion->set_charset('utf8');
@@ -31,6 +21,7 @@ if(validarDatos($nombre, $apellidos, $pass)){
 	if($conexion->connect_errno){
 		$respuesta = ['error' => true];
 	} else {
+		$pass=hash('sha512',$pass);
 		$statement = $conexion->prepare("INSERT INTO empleado(nombre, password, apellidos) VALUES(?,?,?)");
 		$statement->bind_param("sss", $nombre,$pass,  $apellidos);
 		$statement->execute();
@@ -41,9 +32,7 @@ if(validarDatos($nombre, $apellidos, $pass)){
 
 		$respuesta = [];
 	}
-} else {
-	$respuesta = ['error' => true];
-}
+
 
 // echo json_encode($respuesta);
 
