@@ -92,7 +92,7 @@
       </div>
       <div class="col-sm-12 col-md-4">
         <div class="card text-light bg-info mb-3" style="max-width: 320px">
-           <div class="card-header text-center text-light font-weight-bold"><h4>Ventas de Ayer</h4></div>
+           <div class="card-header text-center text-light font-weight-bold"><h4>Porcentaje de ganancias</h4></div>
            <div class="card-body"><h1><i class="fas fa-user-alt"></i></h1>
            <h5 id="ayer" class="card-tittle text-light"></h5>
            <p class="card-text"></p>
@@ -119,7 +119,7 @@
       </div>
       <div class="col-sm-12 col-md-4">
         <div class="card text-warning bg-dark mb-3" style="max-width: 320px">
-           <div class="card-header text-center text-warning font-weight-bold"><h4>Productos Disponibles</h4></div>
+           <div class="card-header text-center text-warning font-weight-bold"><h4>Productos</h4></div>
            <div class="card-body"><h1><i class="fas fa-laptop-house"></i></h1> 
            <h5  id="existencia" class="card-tittle text-warning"></h5>
              <p class="card-text"></p>

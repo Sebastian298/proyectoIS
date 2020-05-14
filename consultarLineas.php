@@ -1,5 +1,9 @@
-<?php
+<?php 
 
+realizar();
+
+
+function realizar() {
  error_reporting(0);
  header('Content-type: application/json; charset=utf-8');
 
@@ -11,7 +15,7 @@
 	];
   } else {
 	$conexion->set_charset("utf8");
-	$statement = $conexion->prepare("SELECT concat(SUM(round((idProducto/Precio*100),2)),'%')AS Porcentaje FROM venta");
+	$statement = $conexion->prepare("SELECT * FROM venta WHERE DATE(fecha) = CURRENT_DATE()");
 	$statement->execute();
 	$resultados = $statement->get_result();
 	
@@ -19,7 +23,8 @@
 	
 	while($fila = $resultados->fetch_assoc()){
 		$usuario = [
-			'Porcentaje' => $fila['Porcentaje'],
+			'Precio' 	=> $fila['Precio'],
+			'Nombre_Producto'=>$fila['Nombre_Producto'],
 		];
 		array_push($respuesta, $usuario);
 	}
@@ -27,7 +32,4 @@
 
  echo json_encode($respuesta);
 
-
-
-
-?>
+}

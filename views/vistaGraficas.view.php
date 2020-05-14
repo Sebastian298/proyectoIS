@@ -36,8 +36,8 @@
                  <div class="card text-white bg-dark text-center" style="width: 18rem;">
                      <img src="img/graficaLineas.png" style="height: 150px;" class="card-img-top" alt="Gráfica">
                        <div class="card-body">
-                         <h5 class="card-title text-warning">Ventas de Hoy y Ayer</h5><br>
-                          <p class="card-text" style="font-size: 20px;">Se visualizara por medio de una gráfica de puntos las ventas que se realizaron, mostrando el Id del producto vendido y su precio</p>
+                         <h5 class="card-title text-warning">Ventas de Hoy</h5><br>
+                          <p class="card-text" style="font-size: 20px;">Se visualizara por medio de una gráfica de puntos las ventas que se realizaron, mostrando el nombre del producto vendido y su precio</p>
                          <a href="graficaLineas.php" class="btn btn-info align-self-center">Entrar</a>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                      <img src="img/graficaBarras.webp" style="height: 150px;" class="card-img-top" alt="Gráfica">
                        <div class="card-body">
                          <h5 class="card-title text-warning">Productos con más ventas</h5><br>
-                          <p class="card-text" style="font-size: 20px;">Se van a poder visualizar por medio de una gráfica de barras la cantidad de ventas de cada producto basado en la jornada laboral actual</p>
+                          <p class="card-text" style="font-size: 20px;">Se van a poder visualizar por medio de una gráfica de barras los productos con más de dos ventas durante la jornada laboral actual</p>
                          <a href="graficaBarras.php" class="btn btn-info align-self-center">Entrar</a>
                         </div>
                     </div>

@@ -36,7 +36,7 @@ function ContarVentasAyer(){
         
         for(var i = 0; i < datos.length; i++){
 		  ayer.innerHTML +=  ` 
-          <h5 class="card-tittle">Cantidad: ${datos[i].Cuantos} ventas</h5>
+          <h5 class="card-tittle">Porcentaje: ${datos[i].Porcentaje} en ventas</h5>
           `
           
         }

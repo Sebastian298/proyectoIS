@@ -1,50 +1,12 @@
-<?php
-include 'db_data.php';
-$host='localhost';
-$dbname=$db_name;
-$user=$db_user;
-$pass=$db_pass;
-
-try{
-    $dbcon= new PDO("mysql:host={$host};dbname={$dbname}",$user,$pass);
-    $dbcon->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-}catch(PDOException $ex){
-   die($ex->getMessage());
-}
-
-$statement = $dbcon->prepare("SELECT * FROM venta WHERE DATE(fecha) = CURRENT_DATE()");
-$statement->execute();
-$json=[];
-$json2=[];
-
-while($row=$statement->fetch(PDO::FETCH_ASSOC)){
-  extract($row);
-  $json[]=$IdVenta;
-  $json2[]=$Precio;
-}
-
-$stat = $dbcon->prepare("SELECT * FROM venta WHERE DATE(fecha) = CURRENT_DATE()-1");
-$stat->execute();
-$json3=[];
-$json4=[];
-
-while($row=$stat->fetch(PDO::FETCH_ASSOC)){
-  extract($row);
-  $json3[]=$IdVenta;
-  $json4[]=$Precio;
-}
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estadisticas</title>
     <script src="https://kit.fontawesome.com/8b850b0e85.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="img/index.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Estadísticas</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -64,18 +26,16 @@ while($row=$stat->fetch(PDO::FETCH_ASSOC)){
           </div>
         </div>
 </nav>
-<br>
-<br>
-<h1 class="text-center font-weight-bold text-primary">Estadísticas de las ventas de Hoy y Ayer</h1>
-<br>
-<br>
-<br>
-<canvas id="myChart" width="400" height="150">
-
-</canvas> 
-<br>
-<br>
-<br>
+  <br>
+  <br>
+  <h1 class="text-center font-weight-bold text-info">Flujo de las ventas del día</h1>
+  <br>
+  <canvas id="myChart" width="400" height="120"></canvas>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
 <footer class="page-footer font-small blue-grey lighten-5">
 
   <div style="background-color: #21d192;">
@@ -194,68 +154,8 @@ while($row=$stat->fetch(PDO::FETCH_ASSOC)){
   <!-- Copyright -->
 
 </footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="js/graficaLineas.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<script>
-
-// function actualizar(){location.reload(true);}
-//      setInterval("actualizar()",1000);
-var speedCanvas = document.getElementById("myChart");
-
-Chart.defaults.global.defaultFontFamily = "Lato";
-Chart.defaults.global.defaultFontSize = 18;
-
-var dataFirst = {
-    label: "Precios de los productos vendidos hoy",
-    data: <?php echo json_encode($json2)?>,
-    lineTension: 0,
-    fill: false,
-    borderColor: 'red'
-  };
-
-var dataSecond = {
-    label: "Precios de los productos vendidos ayer",
-    data: <?php echo json_encode($json4)?>,
-    lineTension: 0,
-    fill: false,
-  borderColor: 'blue'
-  };
-
-var speedData = {
-  labels: <?php echo json_encode($json)?>,
-  datasets: [dataFirst, dataSecond]
-};
-
-// var speedData = {
-//   labels: <?php echo json_encode($json3)?>,
-//   datasets: [dataFirst, dataSecond]
-// };
-
-var chartOptions = {
-  legend: {
-    display: true,
-    position: 'top',
-    labels: {
-      boxWidth: 40,
-      fontColor: 'black'
-    }
-  }
-};
-
-var lineChart = new Chart(speedCanvas, {
-  type: 'line',
-  data: speedData,
-  options: {
-    layout: {
-            padding: {
-                left: 50,
-                right: 0,
-                top: 0,
-                bottom: 0
-            }
-        }
-  }
-});
-</script>
 </body>
 </html>
