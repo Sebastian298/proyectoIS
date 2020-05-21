@@ -56,19 +56,26 @@
 <br>
 <br>
 <br>
-<div class="container my-5">
-  <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th>Id Producto</th>
-      <th>Precio</th>
-      <th>Nombre Producto</th>
-    </tr>
-  </thead>
-  <tbody id="tabla">
-  </tbody>
- </table>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+  <div class="col-sm-12 col-md-8">
+      <table class="table table-hover table-responsive-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th>Id Producto</th>
+            <th>Precio</th>
+            <th>Nombre Producto</th>
+          </tr>
+        </thead>
+       <tbody id="tabla"></tbody>
+      </table>
 </div>
+  </div>
+</div>
+
 <br>
 <br>
 <br>

@@ -53,8 +53,12 @@ function agregarProducto(){
 	nombre = document.getElementById('Nombre').value;
 	descripcion = document.getElementById('Descripcion').value;
 	precio = document.getElementById('Precio').value;
-	imagen=formulario.Imagen.value = document.getElementById('imagen').files[0].name;
+	// if(formulario.Imagen.value==''){
+	// 	imagen=formulario.Imagen=document.getElementById('imagen').value;
+	// }
+	
 	if(formulario_valido() && validarCaptura()){
+     imagen=formulario.Imagen.value = document.getElementById('imagen').files[0].name;
 	 peticion.open('POST','agregarProducto.php');
 	 var parametros = 'nombre='+ nombre + '&descripcion='+ descripcion +'&precio='+ precio+'&imagen='+ imagen;
 	 peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -78,9 +82,13 @@ function agregarProducto(){
 	}else{
 		Swal.fire(
 			'Error!',
-			'Recuerda que el nombre y apellidos no pude llevar números',
+			'No a capturado correctamente algún campo o lo dejo vacio',
 			'error'
 		  )
+		  document.getElementById('Nombre').value='';
+		   document.getElementById('Descripcion').value='';
+		   document.getElementById('Precio').value='';
+		   document.getElementById('imagen').value='';
 	}
  }
 

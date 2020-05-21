@@ -1,7 +1,7 @@
 let nombres = [];
 let precios = [];
 let contador =0;
-  function Peticion(){
+function Peticion(){
     let peticion = new XMLHttpRequest();
     peticion.open('GET', 'consultarBarras.php');
     peticion.onload = function(){
@@ -61,6 +61,8 @@ let contador =0;
    });
   
 }
+
 Peticion();
 setInterval(Peticion, 1000);
+setInterval(cargarGanancias,3000);
     

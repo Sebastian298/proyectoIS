@@ -62,5 +62,35 @@ function Peticion(){
    });
   
 }
+
+function cargarGanancias() {
+    tabla.innerHTML =
+      "<tr><th>Id</th><th>Nombre</th><th>Precio</th><th>Total de Ganancia</th><th>Porcentaje de Venta</th></tr>";
+    let peticion = new XMLHttpRequest();
+    peticion.open("GET", "cargarCard.php");
+  
+    peticion.onload = function () {
+      let datos = JSON.parse(peticion.responseText);
+      tabla.innerHTML = "";
+      if (datos.error) {
+        error_box.classList.add("active");
+      } else {
+        for (var i = 0; i < datos.length; i++) {
+          tabla.innerHTML += ` 
+            <tr>
+            <th>${datos[i].idProducto}</th>
+                <td>${datos[i].Nombre_Producto}</td>
+            <td>$${datos[i].Precio}</td>
+            <td>$${datos[i].Total_Ganancia}</td>
+            <td>${datos[i].Porcentaje_Venta}</td>
+             </tr>
+            `;
+        }
+      }
+    };
+    peticion.send();
+  }
 Peticion();
+cargarGanancias();
 setInterval(Peticion, 1000);
+setInterval(cargarGanancias, 5000);

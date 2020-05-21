@@ -93,7 +93,7 @@
       <div class="col-sm-12 col-md-4">
         <div class="card text-light bg-info mb-3" style="max-width: 320px">
            <div class="card-header text-center text-light font-weight-bold"><h4>Porcentaje de ganancias</h4></div>
-           <div class="card-body"><h1><i class="fas fa-user-alt"></i></h1>
+           <div class="card-body"><h1><i class="fas fa-percentage"></i></h1>
            <h5 id="ayer" class="card-tittle text-light"></h5>
            <p class="card-text"></p>
            </div>
@@ -137,7 +137,7 @@
       <h2 class="text-center font-weight-bold text-dark">Registro de las ventas del día</h2>
       </div>
       <div class="col-sm-12 col-md-10">
-      <table class="table">
+      <table class="table table-hover table-responsive-sm">
         <thead class="thead-dark">
           <tr>
             <th>Id Producto</th>

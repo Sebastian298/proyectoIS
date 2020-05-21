@@ -29,7 +29,26 @@
   <br>
   <h1 class="text-center font-weight-bold text-info">Ganancias totales por producto durante el mes</h1>
   <br>
-  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+      <table class="table table-responsive-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Total de Ganancia</th>
+            <th>Porcentaje de Venta</th>
+          </tr>
+        </thead>
+        <tbody id="tabla">
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+  <hr>
  <canvas id="myChart" width="400" height="150"></canvas>
 
  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
