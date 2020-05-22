@@ -49,7 +49,7 @@
     </div>
   </div>
   <hr>
- <canvas id="myChart" width="400" height="150"></canvas>
+  <canvas id="myChart" style="height: 400px; width: 100%;"></canvas>
 
  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
  <script src="js/graficaCircular.js"></script>
