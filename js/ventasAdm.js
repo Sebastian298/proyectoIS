@@ -157,7 +157,6 @@ function Generar(){
         for (let index = 0; index < datos.length; index++) {
             data.push([`${datos[index].IdProducto}`,`${datos[index].Nombre_Producto}`,`$${datos[index].Precio}`]);
     };
-    console.log(data);
     let fecha = new Date();
     
     let pdf = new jsPDF();
