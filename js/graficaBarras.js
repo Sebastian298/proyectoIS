@@ -64,5 +64,3 @@ function Peticion(){
 
 Peticion();
 setInterval(Peticion, 1000);
-setInterval(cargarGanancias,3000);
-    

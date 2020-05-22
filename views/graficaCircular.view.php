@@ -39,7 +39,7 @@
             <th>Nombre</th>
             <th>Precio</th>
             <th>Total de Ganancia</th>
-            <th>Porcentaje de Venta</th>
+            <th>Porcentaje de Ganancia</th>
           </tr>
         </thead>
         <tbody id="tabla">

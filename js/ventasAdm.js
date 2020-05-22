@@ -147,6 +147,29 @@ function mostrarHoy(){
 	peticion.send();
 }
 
+function Generar(){
+    let data = [];
+    let peticion = new XMLHttpRequest();
+    peticion.open('GET','ventas.php');
+    peticion.onload=function(){
+        let datos = JSON.parse(peticion.responseText);
+        
+        for (let index = 0; index < datos.length; index++) {
+            data.push([`${datos[index].IdProducto}`,`${datos[index].Nombre_Producto}`,`$${datos[index].Precio}`]);
+    };
+    console.log(data);
+    let fecha = new Date();
+    
+    let pdf = new jsPDF();
+    let columns = ["Id", "Nombre", "Precio"];
+    pdf.text(20,20,"Reporte de las ventas del día de hoy");
+    pdf.autoTable(columns,data,
+        { margin:{ top: 25  }}
+      );
+      pdf.save('Reporte del'+' '+fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear()+'.pdf');
+      }
+    peticion.send();
+}
 
 mostrarHoy();
 ContarEmpleados();

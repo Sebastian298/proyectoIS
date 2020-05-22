@@ -11,7 +11,7 @@ if($conexion->connect_errno){
 	];
 } else {
 	$conexion->set_charset("utf8");
-	$statement = $conexion->prepare("SELECT Nombre_Producto,idProducto,Precio, SUM(Precio) AS Total_Ganancia, concat(round((idProducto/Precio*100),2),'%') AS Porcentaje_Venta FROM venta GROUP BY Nombre_Producto");
+	$statement = $conexion->prepare("SELECT COUNT(*) AS Cuantos,Nombre_Producto,idProducto,Precio, SUM(Precio) AS Total_Ganancia, concat(round((100.0 * ((SUM(Precio)) / (SUM(SUM(Precio)) OVER()))),2),'%') AS Porcentaje_Ganancia FROM venta GROUP BY Nombre_Producto");
 	$statement->execute();
 	$resultados = $statement->get_result();
 	
@@ -23,7 +23,7 @@ if($conexion->connect_errno){
 			'idProducto' => $fila['idProducto'],
 			'Precio' => $fila['Precio'],
 			'Total_Ganancia'=> $fila['Total_Ganancia'],
-			'Porcentaje_Venta'=> $fila['Porcentaje_Venta'],
+			'Porcentaje_Ganancia'=> $fila['Porcentaje_Ganancia'],
 		];
 		array_push($respuesta, $usuario);
 	}
