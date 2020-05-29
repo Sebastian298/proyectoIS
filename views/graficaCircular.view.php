@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/8b850b0e85.js" crossorigin="anonymous"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <link rel="shortcut icon" href="img/index.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Estadísticas</title>
@@ -49,10 +50,11 @@
     </div>
   </div>
   <hr>
-  <canvas id="myChart" style="height: 400px; width: 100%;"></canvas>
+  <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+ <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
  <script src="js/graficaCircular.js"></script>
+ <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
  <br>
  <br>
  <br>

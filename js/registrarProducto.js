@@ -53,10 +53,6 @@ function agregarProducto(){
 	nombre = document.getElementById('Nombre').value;
 	descripcion = document.getElementById('Descripcion').value;
 	precio = document.getElementById('Precio').value;
-	// if(formulario.Imagen.value==''){
-	// 	imagen=formulario.Imagen=document.getElementById('imagen').value;
-	// }
-	
 	if(formulario_valido() && validarCaptura()){
      imagen=formulario.Imagen.value = document.getElementById('imagen').files[0].name;
 	 peticion.open('POST','agregarProducto.php');
@@ -110,9 +106,9 @@ function formulario_valido(){
 function validarCaptura(){
 	if(isNaN(nombre)){
         if(isNaN(descripcion)){
-           return true;
-		}else{
-			return false;
+			if(!(isNaN(precio))){
+               return true;
+			}
 		}
 	}
 	return false
